@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemView: View {
-    @State private var isLoading = true
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Rectangle()
@@ -18,8 +18,7 @@ struct ItemView: View {
                 .cornerRadius(10)
 
             VStack(spacing: 0) {
-                Image(systemName: "seal.fill")
-                    .renderingMode(.original)
+                Image(systemName: "photo.fill.on.rectangle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 188, height: 100)
@@ -27,9 +26,9 @@ struct ItemView: View {
                     Text("Item")
                         .titleFont()
                     Text("₱99.00")
-                        .subtitleFont(with: <#T##String#>)
+                        .detailFont()
                         .foregroundColor(.black)
-                        .padding(.top, 2.0)
+                        .padding(.top, 5.0)
 
                 }
             }
