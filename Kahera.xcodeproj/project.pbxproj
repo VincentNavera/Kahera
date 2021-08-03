@@ -16,6 +16,8 @@
 		BD1E2DF326B8E56B00D4DF82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD1E2DF126B8E56B00D4DF82 /* LaunchScreen.storyboard */; };
 		BD1E2DFC26B8F21100D4DF82 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFB26B8F21100D4DF82 /* ItemView.swift */; };
 		BD1E2DFE26B8F87F00D4DF82 /* CustomFontModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */; };
+		BD1E2E0026B8FEB000D4DF82 /* ItemsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */; };
+		BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2E0126B903C300D4DF82 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		BD1E2DFA26B8E61600D4DF82 /* Kahera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kahera.entitlements; sourceTree = "<group>"; };
 		BD1E2DFB26B8F21100D4DF82 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontModifiers.swift; sourceTree = "<group>"; };
+		BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsContentView.swift; sourceTree = "<group>"; };
+		BD1E2E0126B903C300D4DF82 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				BD1E2DE526B8E56A00D4DF82 /* SceneDelegate.swift */,
 				BD1E2DE726B8E56A00D4DF82 /* ContentView.swift */,
 				BD1E2DFB26B8F21100D4DF82 /* ItemView.swift */,
+				BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */,
+				BD1E2E0126B903C300D4DF82 /* HeaderView.swift */,
 				BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */,
 				BD1E2DEC26B8E56B00D4DF82 /* Assets.xcassets */,
 				BD1E2DF126B8E56B00D4DF82 /* LaunchScreen.storyboard */,
@@ -158,10 +164,12 @@
 			files = (
 				BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */,
 				BD1E2DE626B8E56A00D4DF82 /* SceneDelegate.swift in Sources */,
+				BD1E2E0026B8FEB000D4DF82 /* ItemsContentView.swift in Sources */,
 				BD1E2DE826B8E56A00D4DF82 /* ContentView.swift in Sources */,
 				BD1E2DFE26B8F87F00D4DF82 /* CustomFontModifiers.swift in Sources */,
 				BD1E2DFC26B8F21100D4DF82 /* ItemView.swift in Sources */,
 				BD1E2DEB26B8E56A00D4DF82 /* Kahera.xcdatamodeld in Sources */,
+				BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -285,7 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -307,7 +315,7 @@
 				DEVELOPMENT_TEAM = 82VLD4N55H;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Kahera/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,7 +325,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "2,6";
 			};
 			name = Debug;
 		};
@@ -333,7 +341,7 @@
 				DEVELOPMENT_TEAM = 82VLD4N55H;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Kahera/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -343,7 +351,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "2,6";
 			};
 			name = Release;
 		};
