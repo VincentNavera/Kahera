@@ -22,7 +22,13 @@ struct HeaderView: View {
                         }
 
                 } else {
-                    TextField(title, text: $title, onCommit: {self.edit = false})
+                    HStack {
+                        TextField(title, text: $title, onCommit: {self.edit = false})
+                        Button("Done"){
+                            self.edit = false
+                        }
+                    }
+
                 }
             }
             Spacer()

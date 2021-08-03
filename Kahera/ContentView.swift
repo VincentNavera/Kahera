@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("saf")
+        ItemsView()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         ContentView()
+           .previewLayout(.fixed(width: 1024, height: 768))
+           // iPad Mini landscape size
     }
 }
