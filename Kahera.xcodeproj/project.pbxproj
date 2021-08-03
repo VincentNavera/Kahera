@@ -18,6 +18,7 @@
 		BD1E2DFE26B8F87F00D4DF82 /* CustomFontModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */; };
 		BD1E2E0026B8FEB000D4DF82 /* ItemsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */; };
 		BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2E0126B903C300D4DF82 /* HeaderView.swift */; };
+		BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA2F26B90D34003CD754 /* ItemsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontModifiers.swift; sourceTree = "<group>"; };
 		BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsContentView.swift; sourceTree = "<group>"; };
 		BD1E2E0126B903C300D4DF82 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		BDF5EA2F26B90D34003CD754 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				BD1E2DFB26B8F21100D4DF82 /* ItemView.swift */,
 				BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */,
 				BD1E2E0126B903C300D4DF82 /* HeaderView.swift */,
+				BDF5EA2F26B90D34003CD754 /* ItemsView.swift */,
 				BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */,
 				BD1E2DEC26B8E56B00D4DF82 /* Assets.xcassets */,
 				BD1E2DF126B8E56B00D4DF82 /* LaunchScreen.storyboard */,
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */,
+				BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */,
 				BD1E2DE626B8E56A00D4DF82 /* SceneDelegate.swift in Sources */,
 				BD1E2E0026B8FEB000D4DF82 /* ItemsContentView.swift in Sources */,
 				BD1E2DE826B8E56A00D4DF82 /* ContentView.swift in Sources */,

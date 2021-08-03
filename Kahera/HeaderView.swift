@@ -39,7 +39,6 @@ struct HeaderView: View {
         .frame(height: 60)
         .background(Color.white)
         .offset(x: -1)
-        .border(Color.gray, width: 1)
     }
 }
 struct HeaderView_Previews: PreviewProvider {
