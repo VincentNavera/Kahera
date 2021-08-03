@@ -25,8 +25,7 @@ struct ItemView: View {
                     .frame(width: 188, height: 100)
                 VStack(spacing: -8) {
                     Text("Item")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .titleFont()
                     Text("₱99.00")
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
