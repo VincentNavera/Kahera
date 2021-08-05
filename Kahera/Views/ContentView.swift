@@ -15,6 +15,7 @@ struct ContentView: View {
                 if showCart {
                     CartView()
                 }
+
                 ItemsView()
             }
             HStack {
@@ -29,6 +30,7 @@ struct ContentView: View {
                 }
                 Spacer()
             }
+            .padding()
             .padding()
         }
 

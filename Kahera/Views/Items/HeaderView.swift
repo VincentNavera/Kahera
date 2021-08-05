@@ -12,8 +12,6 @@ struct HeaderView: View {
     @State private var title = "STORE NAME"
     var body: some View {
         ZStack {
-
-
                 HStack {
                     if !edit {
                         Text(title)
@@ -48,6 +46,7 @@ struct HeaderView: View {
                 .padding(.trailing, 15)
             }
         }
+        .padding()
     }
 }
 struct HeaderView_Previews: PreviewProvider {

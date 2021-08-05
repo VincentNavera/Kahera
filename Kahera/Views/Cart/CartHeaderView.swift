@@ -19,6 +19,7 @@ struct CartHeaderView: View {
         }
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
         .frame(height: 60)
+        .padding()
         .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
         .offset(x: -1)
 
