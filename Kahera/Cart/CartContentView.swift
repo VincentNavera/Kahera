@@ -18,10 +18,20 @@ struct CartContentView: View {
             }
 
             Section {
-                ForEach(0..<3) { _ in
-                    CartItemView()
+                ScrollView {
+                    LazyVStack {
+                        ForEach(0..<10) { _ in
+                            CartItemView()
+                        }
+                        .frame(height: 80)
+
+                        .padding()
+
+                    }
                 }
+
             }
+            .frame(height: 300)
 
             Section {
 
