@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showCart = false
     var body: some View {
-        HStack(spacing: -5) {
-            ItemsView()
-            Spacer()
-            CartView()
+        ZStack {
+            HStack {
+                if showCart {
+                    CartView()
+                }
+                ItemsView()
+            }
+            HStack {
+                VStack {
+                    Image(systemName: "sidebar.left")
+                        .font(Font.system(size: 24, weight: .thin))
+                        .onTapGesture {
+                            withAnimation(.spring()){
+                                showCart.toggle()}
+                        }
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding()
         }
     }
 }
