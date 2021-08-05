@@ -27,7 +27,6 @@ struct ItemView: View {
                         .titleFont()
                     Text("₱99.00")
                         .detailFont()
-                        .foregroundColor(.black)
                         .padding(.top, 5.0)
 
                 }
