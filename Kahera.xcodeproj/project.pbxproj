@@ -21,6 +21,7 @@
 		BDCDAB8A26BB8D6100F48A00 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8926BB8D6100F48A00 /* CartItemView.swift */; };
 		BDCDAB8C26BBA98500F48A00 /* CartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8B26BBA98500F48A00 /* CartContentView.swift */; };
 		BDCDAB8E26BBB90F00F48A00 /* CartTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */; };
+		BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */; };
 		BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA2F26B90D34003CD754 /* ItemsView.swift */; };
 		BDF5EA3226B90F89003CD754 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA3126B90F89003CD754 /* EditItemView.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		BDCDAB8926BB8D6100F48A00 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		BDCDAB8B26BBA98500F48A00 /* CartContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartContentView.swift; sourceTree = "<group>"; };
 		BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalView.swift; sourceTree = "<group>"; };
+		BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeaderView.swift; sourceTree = "<group>"; };
 		BDF5EA2F26B90D34003CD754 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 		BDF5EA3126B90F89003CD754 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */,
 				BDCDAB8B26BBA98500F48A00 /* CartContentView.swift */,
 				BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */,
+				BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */,
 				BDF5EA3126B90F89003CD754 /* EditItemView.swift */,
 				BD1E2DEC26B8E56B00D4DF82 /* Assets.xcassets */,
 				BD1E2DF126B8E56B00D4DF82 /* LaunchScreen.storyboard */,
@@ -180,6 +183,7 @@
 				BDCDAB8E26BBB90F00F48A00 /* CartTotalView.swift in Sources */,
 				BDCDAB8C26BBA98500F48A00 /* CartContentView.swift in Sources */,
 				BDCDAB8A26BB8D6100F48A00 /* CartItemView.swift in Sources */,
+				BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */,
 				BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */,
 				BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */,
 				BD1E2DE626B8E56A00D4DF82 /* SceneDelegate.swift in Sources */,
