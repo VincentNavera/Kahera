@@ -24,8 +24,7 @@ struct CartItemView: View {
 
             VStack(alignment: .trailing, spacing: 0) {
                 Text("₱999.99")
-                    .font(Font.system(size: 35, weight: .bold, design: .rounded))
-                    .foregroundColor(.black)
+                    .largeTitleFont()
                     .offset(y: 5)
                 Spacer()
                 Text("QTY: x1")
