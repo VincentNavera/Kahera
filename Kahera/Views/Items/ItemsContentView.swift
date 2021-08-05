@@ -16,6 +16,7 @@ struct ItemsContentView: View {
                 }
             }.padding(.top, 20)
             .padding(.horizontal, 10)
+            .animation(.spring())
         }
     }
 }
