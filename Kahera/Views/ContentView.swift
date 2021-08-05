@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ItemsView()
+        HStack(spacing: -5) {
+            ItemsView()
+            Spacer()
+            CartView()
+        }
     }
 }
 

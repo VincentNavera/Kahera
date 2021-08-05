@@ -84,9 +84,7 @@
 				BD1E2DFA26B8E61600D4DF82 /* Kahera.entitlements */,
 				BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */,
 				BD1E2DE526B8E56A00D4DF82 /* SceneDelegate.swift */,
-				BD1E2DE726B8E56A00D4DF82 /* ContentView.swift */,
-				BDCDAB9426BBBDD300F48A00 /* Items */,
-				BDCDAB9326BBBDB000F48A00 /* Cart */,
+				BDCDAB9526BBC18900F48A00 /* Views */,
 				BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */,
 				BD1E2DEC26B8E56B00D4DF82 /* Assets.xcassets */,
 				BD1E2DF126B8E56B00D4DF82 /* LaunchScreen.storyboard */,
@@ -127,6 +125,16 @@
 				BDF5EA3126B90F89003CD754 /* EditItemView.swift */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		BDCDAB9526BBC18900F48A00 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD1E2DE726B8E56A00D4DF82 /* ContentView.swift */,
+				BDCDAB9426BBBDD300F48A00 /* Items */,
+				BDCDAB9326BBBDB000F48A00 /* Cart */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

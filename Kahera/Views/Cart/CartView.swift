@@ -24,5 +24,6 @@ struct CartView: View {
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
+            .previewLayout(.fixed(width: 400, height: 768))
     }
 }
