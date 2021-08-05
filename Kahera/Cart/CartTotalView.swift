@@ -30,6 +30,8 @@ struct CartTotalView: View {
             .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
         }
         .frame(height: 93)
+        .background(Color.clear)
+
     }
 }
 
