@@ -18,7 +18,7 @@ struct CartContentView: View {
             }
 
             Section {
-                ForEach(0..<10) { _ in
+                ForEach(0..<3) { _ in
                     CartItemView()
                 }
             }
@@ -101,6 +101,16 @@ struct CartContentView: View {
                 HStack {
 
                     Text("Cash:")
+                        .detailFont()
+
+                    Spacer()
+                    Text("₱0.00")
+
+
+                }
+                HStack {
+
+                    Text("Change:")
                         .detailFont()
 
                     Spacer()
