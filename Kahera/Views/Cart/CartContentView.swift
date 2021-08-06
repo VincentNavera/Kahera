@@ -18,11 +18,12 @@ struct CartContentView: View {
             }
 
             Section {
-                ForEach(0..<3) { _ in
+                ForEach(0..<6) { _ in
                     CartItemView()
                 }
+
             }
-            .frame(height: 80)
+            .frame(height: 100)
 
             Section {
 

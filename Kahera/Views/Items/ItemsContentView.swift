@@ -14,9 +14,8 @@ struct ItemsContentView: View {
                 ForEach(0..<20) { _ in
                     ItemView()
                 }
-            }.padding(.top, 20)
+            }.padding(.top, 40)
             .padding(.horizontal, 10)
-            .animation(.spring())
         }
     }
 }

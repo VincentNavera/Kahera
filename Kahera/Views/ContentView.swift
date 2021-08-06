@@ -11,12 +11,14 @@ struct ContentView: View {
     @State private var showCart = false
     var body: some View {
         ZStack {
-            HStack {
+            HStack(spacing: -5) {
                 if showCart {
                     CartView()
+                        .transition(.move(edge: .leading))
                 }
 
                 ItemsView()
+                    .animation(.easeIn(duration: 0.3))
             }
             HStack {
                 VStack {
@@ -33,6 +35,7 @@ struct ContentView: View {
             .padding()
             .padding()
         }
+        .preferredColorScheme(.light)
 
         .ignoresSafeArea()
     }
