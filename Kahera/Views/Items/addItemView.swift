@@ -13,6 +13,7 @@ struct addItemView: View {
     @State private var price = ""
     @State private var qty = ""
     @State private var id = ""
+    @Binding var showAdditem: Bool
     var body: some View {
         VStack {
             Form {
@@ -42,10 +43,7 @@ struct addItemView: View {
                 Spacer()
 
                 Button("Cancel") {
-                    self.itemName = ""
-                    self.price = ""
-                    self.qty = ""
-                    self.id = ""
+                    self.showAdditem = false
                 }
                 Spacer()
             }
@@ -59,6 +57,7 @@ struct addItemView: View {
         item.price = Double(price) ?? 0.00
 
         try? self.moc.save()
+        self.showAdditem = false
         print("saving...")
 
     }
@@ -66,6 +65,6 @@ struct addItemView: View {
 
 struct addItemView_Previews: PreviewProvider {
     static var previews: some View {
-        addItemView()
+        addItemView( showAdditem: .constant(true))
     }
 }
