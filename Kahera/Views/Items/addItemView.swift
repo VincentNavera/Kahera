@@ -20,23 +20,35 @@ struct addItemView: View {
                     TextField("", text: $itemName)
                 }
                 Section(header: Text("Item ID / Barcode")){
-                    TextField("id", text: $id)
+                    TextField("0000000000", text: $id)
                         .keyboardType(.numberPad)
                 }
                 Section(header: Text("Price")){
-                    TextField("₱\(price)", text: $price)
+                    TextField("₱0.00)", text: $price)
                         .keyboardType(.decimalPad)
                 }
                 Section(header: Text("Quantity")){
-                        TextField(qty, text: $qty)
+                        TextField("0", text: $qty)
                             .keyboardType(.numberPad)
                 }
 
             }
 
-            Button(action: saveItem, label: {
-                Text("Save")
-            })
+            HStack {
+                Spacer()
+                Button(action: saveItem, label: {
+                    Text("Save")
+                })
+                Spacer()
+
+                Button("Cancel") {
+                    self.itemName = ""
+                    self.price = ""
+                    self.qty = ""
+                    self.id = ""
+                }
+                Spacer()
+            }
         }
     }
     func saveItem() {
