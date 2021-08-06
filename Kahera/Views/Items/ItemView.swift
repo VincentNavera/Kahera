@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ItemView: View {
 
+    var itemLabel: String
+    var priceLabel: String
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Rectangle()
@@ -23,9 +26,9 @@ struct ItemView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 188, height: 100)
                 VStack(spacing: -8) {
-                    Text("Item")
+                    Text(itemLabel)
                         .titleFont()
-                    Text("₱99.00")
+                    Text("₱\(priceLabel)")
                         .detailFont()
                         .padding(.top, 5.0)
 
@@ -41,7 +44,7 @@ struct ItemView: View {
 }
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView()
+        ItemView(itemLabel: "Item", priceLabel: "₱9999.99")
             .previewLayout(.sizeThatFits)
 
 

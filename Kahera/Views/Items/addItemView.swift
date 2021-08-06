@@ -9,7 +9,6 @@ import SwiftUI
 
 struct addItemView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Inventory.entity(), sortDescriptors: []) var inventory: FetchedResults<Inventory>
     @State private var itemName = ""
     @State private var price = ""
     @State private var qty = ""
