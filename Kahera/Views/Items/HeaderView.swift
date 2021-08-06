@@ -10,6 +10,7 @@ import SwiftUI
 struct HeaderView: View {
     @State private var edit = false
     @State private var title = "STORE NAME"
+    @State private var showAdditem = false
     var body: some View {
         ZStack {
                 HStack {
@@ -37,16 +38,26 @@ struct HeaderView: View {
 
             HStack {
                 Spacer()
-                Button(action: { }) {
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .font(Font.system(size: 24, weight: .thin))
+                Button(action:{self.showAdditem = true}) {
+                    Image(systemName: "plus")
+                        .font(Font.system(size: 24, weight: .regular))
+
                 }
                 .buttonStyle(PlainButtonStyle())
-                .foregroundColor(Color.black)
+                .padding(.trailing, 15)
+
+                Button(action: { }) {
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                        .font(Font.system(size: 24, weight: .regular))
+                }
+                .buttonStyle(PlainButtonStyle())
                 .padding(.trailing, 15)
             }
-        }
+        }.foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
         .padding()
+        .sheet(isPresented: $showAdditem, content: {
+            addItemView()
+        })
     }
 }
 struct HeaderView_Previews: PreviewProvider {
