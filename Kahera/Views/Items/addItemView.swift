@@ -21,11 +21,11 @@ struct addItemView: View {
                     TextField("", text: $itemName)
                 }
                 Section(header: Text("Item ID / Barcode")){
-                    TextField("0000000000", text: $id)
+                    TextField("", text: $id)
                         .keyboardType(.numberPad)
                 }
                 Section(header: Text("Price")){
-                    TextField("₱0.00)", text: $price)
+                    TextField("₱0.00", text: $price)
                         .keyboardType(.decimalPad)
                 }
                 Section(header: Text("Quantity")){
@@ -56,7 +56,7 @@ struct addItemView: View {
         item.quantity = qty
         item.price = Double(price) ?? 0.00
 
-        try? self.moc.save()
+        try? self.moc.save() //saves to Inventory
         self.showAdditem = false
         print("saving...")
 

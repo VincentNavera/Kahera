@@ -10,15 +10,16 @@ import SwiftUI
 struct ItemView: View {
 
     var itemLabel: String
-    var priceLabel: String
+    var priceLabel: Double
 
     var body: some View {
         ZStack(alignment: .bottom) {
             Rectangle()
-                .foregroundColor(Color.white)
+                .foregroundColor(Color(.displayP3, red: 1, green: 1, blue: 1, opacity: 1.0))
                 .frame(minWidth: 200)
                 .frame(height: 110)
-                .cornerRadius(10)
+                .cornerRadius(24)
+                .shadow(color: Color(.displayP3, red: 242/255, green: 242/255, blue: 1, opacity: 1.0), radius: 24)
 
             VStack(spacing: 0) {
                 Image(systemName: "photo.fill.on.rectangle.fill")
@@ -28,7 +29,7 @@ struct ItemView: View {
                 VStack(spacing: -8) {
                     Text(itemLabel)
                         .titleFont()
-                    Text("₱\(priceLabel)")
+                    Text("₱\(Double(priceLabel) , specifier: "%.2f")") //format to two decimal places
                         .detailFont()
                         .padding(.top, 5.0)
 
@@ -44,7 +45,7 @@ struct ItemView: View {
 }
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(itemLabel: "Item", priceLabel: "₱9999.99")
+        ItemView(itemLabel: "Item", priceLabel: 9999.99)
             .previewLayout(.sizeThatFits)
 
 

@@ -15,7 +15,10 @@ struct ItemsContentView: View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 200), spacing: 10)], spacing: 34) {
                 ForEach(inventory, id: \.id) { item in
-                    ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: String(item.price))
+                    ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price)
+                        .onTapGesture {
+                        
+                        }
                 }
             }.padding(.top, 40)
             .padding(.horizontal, 10)

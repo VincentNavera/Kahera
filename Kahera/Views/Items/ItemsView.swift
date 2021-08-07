@@ -13,7 +13,7 @@ struct ItemsView: View {
             HeaderView()
             ItemsContentView()
         }
-        .background(Color(#colorLiteral(red: 0.8919270833, green: 0.8919270833, blue: 0.8919270833, alpha: 1)))
+        .background(Color(.displayP3, red: 248/255, green: 250/255, blue: 251/255, opacity: 1.0))
     }
 }
 
