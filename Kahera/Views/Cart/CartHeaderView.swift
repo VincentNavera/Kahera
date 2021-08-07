@@ -12,11 +12,12 @@ struct CartHeaderView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text(String(cart.items.count))
+            Text("Cart(\(cart.items.count))")
                 .titleFont()
             Spacer()
             Image(systemName: "trash")
-                .font(Font.system(size: 24, weight: .thin))
+                .font(Font.system(size: 24, weight: .regular))
+                .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
         }
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
         .frame(height: 60)

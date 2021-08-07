@@ -30,6 +30,7 @@ struct ContentView: View {
                             withAnimation(.spring()){
                                 showCart.toggle()}
                         }
+
                     Spacer()
                 }
                 Spacer()
