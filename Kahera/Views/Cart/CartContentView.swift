@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CartContentView: View {
+    @ObservedObject var cart: CartItems //monitors the CartItems object for changes
+
     var body: some View {
         Form {
             Section {
@@ -18,9 +20,11 @@ struct CartContentView: View {
             }
 
             Section {
-                ForEach(0..<6) { _ in
-                    CartItemView(cartItemPrice: <#Double#>, cartItemName: <#String#>, cartItemQuantity: <#Int#>)
-                }
+                    ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
+                        CartItemView(cartItemPrice: item.price, cartItemName: item.name, cartItemQuantity: item.quantity)
+
+                    }
+
 
             }
             .frame(height: 100)
@@ -128,6 +132,6 @@ struct CartContentView: View {
 
 struct CartContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CartContentView()
+        CartContentView(cart: CartItems())
     }
 }

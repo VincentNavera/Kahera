@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CartView: View {
+    @ObservedObject var cart: CartItems
     var body: some View {
         VStack {
             CartHeaderView()
-            CartContentView()
+            CartContentView(cart: cart)
             Spacer()
             CartTotalView()
         }
@@ -23,7 +24,7 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView()
+        CartView(cart: CartItems())
             .previewLayout(.fixed(width: 400, height: 768))
     }
 }

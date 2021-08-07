@@ -3,7 +3,7 @@ import SwiftUI
 struct CartItemView: View {
     let cartItemPrice: Double
     let cartItemName: String
-    let cartItemQuantity: Int
+    let cartItemQuantity: String
     var body: some View {
         HStack {
             HStack(spacing: 10) {
@@ -30,7 +30,7 @@ struct CartItemView: View {
                     .largeTitleFont()
                     .offset(y: 5)
                 Spacer()
-                Text(String(cartItemQuantity))
+                Text("QTY: x\(cartItemQuantity)")
                     .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
                     .detailFont()
 
@@ -43,7 +43,7 @@ struct CartItemView: View {
 
 struct CartItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemView(cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: 1)
+        CartItemView(cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: "1")
             .previewLayout(.fixed(width: 475, height: 100))
     }
 }

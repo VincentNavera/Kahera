@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showCart = false
+    @ObservedObject var cart: CartItems //monitors the CartItems object for changes
     var body: some View {
         ZStack {
             HStack(spacing: -5) {
                 if showCart {
-                    CartView()
+                    CartView(cart: cart)
                         .transition(.move(edge: .leading))
                 }
 
-                ItemsView()
+                ItemsView(cart: cart)
                     .animation(.easeIn(duration: 0.3))
             }
             HStack {
@@ -44,7 +45,7 @@ struct ContentView: View {
 
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(cart: CartItems())
            .previewLayout(.fixed(width: 1024, height: 768))
            // iPad Mini landscape size
     }
