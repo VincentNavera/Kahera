@@ -19,7 +19,7 @@ struct CartContentView: View {
 
             Section {
                 ForEach(0..<6) { _ in
-                    CartItemView()
+                    CartItemView(cartItemPrice: <#Double#>, cartItemName: <#String#>, cartItemQuantity: <#Int#>)
                 }
 
             }
