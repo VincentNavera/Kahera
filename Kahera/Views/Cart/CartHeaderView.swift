@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CartHeaderView: View {
+    @ObservedObject var cart: CartItems //monitors the CartItems object for changes
     var body: some View {
         HStack {
             Spacer()
-            Text("CART (0)")
+            Text(String(cart.items.count))
                 .titleFont()
             Spacer()
             Image(systemName: "trash")
@@ -28,6 +29,6 @@ struct CartHeaderView: View {
 
 struct CartHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        CartHeaderView()
+        CartHeaderView(cart: CartItems())
     }
 }
