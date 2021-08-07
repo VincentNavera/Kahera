@@ -18,10 +18,7 @@ struct ItemsContentView: View {
                 ForEach(inventory, id: \.id) { item in
                     ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price)
                         .onTapGesture {
-                            self.cart.items.insert(CartItemModel(name: item.name!, price: item.price, quantity: item.quantity!), at: 0)
-                            print(cart.items[0].name)
-                            print(cart.items.count)
-                            print(cart.items)
+                            self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: "1"), at: 0)
                         
                         }
 

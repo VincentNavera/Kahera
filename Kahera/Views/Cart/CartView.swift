@@ -11,7 +11,7 @@ struct CartView: View {
     @ObservedObject var cart: CartItems
     var body: some View {
         VStack {
-            CartHeaderView()
+            CartHeaderView(cart: cart)
             CartContentView(cart: cart)
             Spacer()
             CartTotalView()

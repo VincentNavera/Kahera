@@ -17,7 +17,7 @@ struct CartItemView: View {
 
                     }
                     .padding(.leading, 10)
-                    Text("ITEM NAME")
+                    Text(cartItemName)
                         .detailFont()
                         .padding(.leading)
                 }
