@@ -52,7 +52,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱0.00")
+                    Text("₱\(cart.totalPrice - (0.12 * cart.totalPrice), specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
@@ -64,7 +64,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱0.00")
+                    Text("₱\(0.12 * cart.totalPrice, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
 
@@ -110,7 +110,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    TextField("₱\(cash)", text: $cash)
+                    TextField("₱0.00", text: $cash)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(.roundedBorder)
 
