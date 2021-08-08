@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CartContentView: View {
     @ObservedObject var cart: CartItems //monitors the CartItems object for changes
+    @State private var cash = ""
 
     var body: some View {
         Form {
@@ -109,7 +110,9 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱0.00")
+                    TextField("₱\(cash)", text: $cash)
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(.roundedBorder)
 
 
                 }
@@ -119,7 +122,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱0.00")
+                    Text("₱\((Double(cash) ?? 0.00) - cart.totalPrice, specifier: "%.2f")")
 
 
                 }
