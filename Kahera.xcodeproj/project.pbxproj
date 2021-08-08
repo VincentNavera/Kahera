@@ -26,7 +26,6 @@
 		BDCDAB8E26BBB90F00F48A00 /* CartTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */; };
 		BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */; };
 		BDCDAB9226BBBAFD00F48A00 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB9126BBBAFD00F48A00 /* CartView.swift */; };
-		BDD03DE226BEF8AF009F055D /* customTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD03DE126BEF8AF009F055D /* customTransition.swift */; };
 		BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA2F26B90D34003CD754 /* ItemsView.swift */; };
 		BDF5EA3226B90F89003CD754 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA3126B90F89003CD754 /* EditItemView.swift */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalView.swift; sourceTree = "<group>"; };
 		BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeaderView.swift; sourceTree = "<group>"; };
 		BDCDAB9126BBBAFD00F48A00 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
-		BDD03DE126BEF8AF009F055D /* customTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTransition.swift; sourceTree = "<group>"; };
 		BDF5EA2F26B90D34003CD754 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 		BDF5EA3126B90F89003CD754 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +118,6 @@
 				BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */,
 				BDCDAB9126BBBAFD00F48A00 /* CartView.swift */,
 				BD1A4F2926BE578300AECF7D /* CartItemModel.swift */,
-				BDD03DE126BEF8AF009F055D /* customTransition.swift */,
 				BD9EDF5026BE71E700685C6F /* CartItems.swift */,
 			);
 			path = Cart;
@@ -237,7 +234,6 @@
 				BD1E2DEB26B8E56A00D4DF82 /* Kahera.xcdatamodeld in Sources */,
 				BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */,
 				BD89E18E26BD3F75000413EE /* addItemView.swift in Sources */,
-				BDD03DE226BEF8AF009F055D /* customTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

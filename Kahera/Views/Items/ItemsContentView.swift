@@ -14,6 +14,7 @@ struct ItemsContentView: View {
     @State private var animationAmount: CGFloat = 1
     @State private var tappedCard = ""
     @State private var showAddToCart = false //to be used later for add to cart animation
+    @State private var prices = [Double]()
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -32,6 +33,14 @@ struct ItemsContentView: View {
                         self.tappedCard = item.name ?? "no item name"
                         animationAmount += 0.3
                         showAddToCart = true
+
+                        prices += [item.price]
+                        print(prices)
+
+                        self.cart.totalPrice = prices.reduce(0, +)
+                        print(cart.totalPrice)
+
+
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                             animationAmount = 1
                             showAddToCart = false

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CartTotalView: View {
+    @ObservedObject var cart: CartItems //monitors the CartItems object for changes
+
     var body: some View {
         HStack {
             ZStack {
@@ -20,8 +22,10 @@ struct CartTotalView: View {
                     .foregroundColor(.white)
                         .titleFont()
                     Spacer()
-                    Text("$9999.99")
-                        .foregroundColor(.white)
+
+
+                    Text("₱\(String(cart.totalPrice))")
+                            .foregroundColor(.white)
                         .largeTitleFont()
                 }
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
@@ -31,12 +35,13 @@ struct CartTotalView: View {
         }
         .frame(height: 93)
         .background(Color.clear)
+        .onAppear{print(cart.totalPrice)}
 
     }
 }
 
 struct CartTotalView_Previews: PreviewProvider {
     static var previews: some View {
-        CartTotalView()
+        CartTotalView(cart: CartItems())
     }
 }
