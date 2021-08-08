@@ -10,7 +10,7 @@ import SwiftUI
 struct HeaderView: View {
     @State private var edit = false
     @State private var title = "STORE NAME"
-    @State private var showAdditem = false
+    @State private var showAddItem = false
     var body: some View {
             ZStack {
                 if !edit {
@@ -21,7 +21,7 @@ struct HeaderView: View {
                         }
                     HStack {
                         Spacer()
-                        Button(action:{self.showAdditem = true}) {
+                        Button(action:{self.showAddItem = true}) {
                             Image(systemName: "plus")
                                 .font(Font.system(size: 24, weight: .regular))
 
@@ -53,8 +53,8 @@ struct HeaderView: View {
             .offset(x: -1)
             .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
             .padding()
-            .sheet(isPresented: $showAdditem, content: {
-                addItemView(showAdditem: $showAdditem)
+            .sheet(isPresented: $showAddItem, content: {
+                addItemView(showAddItem: $showAddItem)
             })
 
 

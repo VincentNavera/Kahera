@@ -15,6 +15,7 @@ struct ItemsContentView: View {
     @State private var tappedCard = ""
     @State private var showAddToCart = false //to be used later for add to cart animation
     @State private var prices = [Double]()
+    @State private var editItems = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -25,6 +26,12 @@ struct ItemsContentView: View {
                         ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price)
                             .scaleEffect(tappedCard == item.name! ? animationAmount : 1)
                             .animation(tappedCard == item.name! ? .spring() : nil)
+                            .rotationEffect(.degrees(editItems ? 2.5 : 0))
+                            .animation(Animation.easeInOut(duration: 0.15).repeatForever(autoreverses: true))
+                            .overlay(editItems ? Image(systemName: "minus.circle.fill")
+                                        .font(.title)
+                                        .foregroundColor(Color.red)
+                                        .offset(x: -80, y: -80) : nil)
 
 
                     }
@@ -45,6 +52,9 @@ struct ItemsContentView: View {
                             animationAmount = 1
                             showAddToCart = false
                         }
+                    }
+                    .onLongPressGesture{
+                        self.editItems.toggle()
                     }
 
                 }
