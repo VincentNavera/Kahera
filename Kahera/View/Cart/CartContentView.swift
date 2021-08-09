@@ -23,12 +23,15 @@ struct CartContentView: View {
             Section {
                     ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
                         CartItemView(cartItemPrice: item.price, cartItemName: item.name, cartItemQuantity: item.quantity)
-
                     }
-
-
+                    .onDelete(perform: deleteItems)
+                
             }
             .frame(height: 100)
+            
+
+
+
 
             Section {
 
@@ -130,6 +133,9 @@ struct CartContentView: View {
 
             }
         }
+    }
+    func deleteItems(at offsets: IndexSet) {
+        cart.items.remove(atOffsets: offsets)
     }
 }
 
