@@ -15,14 +15,14 @@ struct EditItemView: View {
     @State private var itemName = "Item Name"
     @State private var price = "0.00"
     @State private var qty = "0"
-    @State private var id = "1"
+    @State private var barcode = "1"
     var body: some View {
         Form {
             Section(header: Text("Item Name")) {
                 TextField("", text: $itemName)
             }
             Section(header: Text("Item ID / Barcode")){
-                TextField("", text: $id)
+                TextField("", text: $barcode)
                     .keyboardType(.numberPad)
             }
             Section(header: Text("Price")){
@@ -35,13 +35,13 @@ struct EditItemView: View {
             }
 
         }
-        .onAppear{ // a bug to be fixed
-            self.itemName = self.inventory.name ?? "no name"
-            self.id = self.inventory.id ?? "0000"
-            self.price = "₱\(self.inventory.price)"
-            self.qty = self.inventory.quantity ?? "0"
+//        .onAppear{ // a bug to be fixed
+//            self.itemName = self.inventory.name ?? "no name"
+//            self.barcode = self.inventory.barcode ?? "0000"
+//            self.price = String(self.inventory.price)
+//            self.qty = self.inventory.quantity ?? "0"
 
-        }
+//        }
 
         HStack {
             Spacer()
@@ -59,14 +59,19 @@ struct EditItemView: View {
     }
     func saveItem() {
         let item = Inventory(context: self.moc)
-        item.id = id 
+        item.id = inventory.id
+        item.barcode = barcode
         item.name = itemName
         item.quantity = qty //qty type to be edited later
         item.price = Double(price) ?? 0.00
 
-        try? self.moc.save() //saves to Inventory
-        self.showEditItem = false
-        print("saving...")
+        do {
+            try self.moc.save() //saves to Inventory
+            self.showEditItem = false
+            print("saving...")
+        } catch {
+            print(error.localizedDescription)
+        }
 
     }
 }
@@ -76,9 +81,9 @@ struct EditItemView_Previews: PreviewProvider {
 
         static var previews: some View {
             let inventory = Inventory(context: moc)
-            inventory.name = "Test book"
-            inventory.quantity = "Test author"
-            inventory.id = "Fantasy"
+            inventory.name = ""
+            inventory.quantity = ""
+            inventory.barcode = ""
             inventory.price = 0.00
 
             return NavigationView {

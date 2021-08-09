@@ -12,7 +12,7 @@ struct AddItemView: View {
     @State private var itemName = ""
     @State private var price = ""
     @State private var qty = ""
-    @State private var id = ""
+    @State private var barcode = ""
     @Binding var showAddItem: Bool
     var body: some View {
         VStack {
@@ -21,7 +21,7 @@ struct AddItemView: View {
                     TextField("", text: $itemName)
                 }
                 Section(header: Text("Item ID / Barcode")){
-                    TextField("", text: $id)
+                    TextField("", text: $barcode)
                         .keyboardType(.numberPad)
                 }
                 Section(header: Text("Price")){
@@ -51,14 +51,20 @@ struct AddItemView: View {
     }
     func saveItem() {
         let item = Inventory(context: self.moc)
-        item.id = id
+        item.id = UUID()
+        item.barcode = barcode
         item.name = itemName
         item.quantity = qty //qty type to be edited later
         item.price = Double(price) ?? 0.00
 
-        try? self.moc.save() //saves to Inventory
-        self.showAddItem = false
-        print("saving...")
+        do {
+            try self.moc.save() //saves to Inventory
+
+            self.showAddItem = false
+            print("saving...")
+        } catch {
+            print(error.localizedDescription)
+        }
 
     }
 }
