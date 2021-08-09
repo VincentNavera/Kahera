@@ -12,10 +12,10 @@
                 <constraint value="id"/>
             </uniquenessConstraint>
             <uniquenessConstraint>
-                <constraint value="name"/>
+                <constraint value="barcode"/>
             </uniquenessConstraint>
             <uniquenessConstraint>
-                <constraint value="barcode"/>
+                <constraint value="name"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemsContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Inventory.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Inventory.name, ascending: true)]) var inventory: FetchedResults<Inventory>
+    @FetchRequest(entity: Inventory.entity(), sortDescriptors: []) var inventory: FetchedResults<Inventory>
     @StateObject var cart = CartItems() //this creates and owns the CartItems object
     @State private var animationAmount: CGFloat = 1
     @State private var tappedCard = ""
@@ -39,11 +39,13 @@ struct ItemsContentView: View {
                                 },
                                     .default(Text("Edit Item")) {
                                         self.showEditItem = true
+                                        print(item.id!)
                                         
-
-
                                 }])
-                            }
+                            }.sheet(isPresented: $showEditItem, content: {
+                                EditItemView(inventory: item) //different item gets passed problem to be fixed 
+                            })
+
 
 
                     }
@@ -74,10 +76,8 @@ struct ItemsContentView: View {
                     .onLongPressGesture{
                         showActions = true
                         self.tappedCard = item.name ?? "no item name"
+                        print(item.id!)
                     }
-                    .sheet(isPresented: $showEditItem, content: {
-                        EditItemView(inventory: item, showEditItem: $showEditItem)
-                    })
 
 
 

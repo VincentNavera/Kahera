@@ -10,8 +10,8 @@ import CoreData
 
 struct EditItemView: View {
     @Environment(\.managedObjectContext) var moc // for saving later
-    let inventory: Inventory
-    @Binding var showEditItem: Bool //for saving later
+    @Environment(\.presentationMode) var presentationMode
+    var inventory: Inventory
     @State private var itemName = "Item Name"
     @State private var price = "0.00"
     @State private var qty = "0"
@@ -35,13 +35,15 @@ struct EditItemView: View {
             }
 
         }
-//        .onAppear{ // a bug to be fixed
-//            self.itemName = self.inventory.name ?? "no name"
-//            self.barcode = self.inventory.barcode ?? "0000"
-//            self.price = String(self.inventory.price)
-//            self.qty = self.inventory.quantity ?? "0"
+        .onAppear{ // a bug to be fixed
+            self.itemName = self.inventory.name ?? "no name"
+            self.barcode = self.inventory.barcode ?? "0000"
+            self.price = String(self.inventory.price)
+            self.qty = self.inventory.quantity ?? "0"
 
-//        }
+            print(inventory.id!)
+
+        }
 
         HStack {
             Spacer()
@@ -51,24 +53,22 @@ struct EditItemView: View {
             Spacer()
 
             Button("Cancel") {
-                self.showEditItem = false
+                self.presentationMode.wrappedValue.dismiss()
             }
             Spacer()
         }
         
     }
     func saveItem() {
-        let item = Inventory(context: self.moc)
-        item.id = inventory.id
-        item.barcode = barcode
-        item.name = itemName
-        item.quantity = qty //qty type to be edited later
-        item.price = Double(price) ?? 0.00
+        inventory.barcode = barcode
+        inventory.name = itemName
+        inventory.quantity = qty //qty type to be edited later
+        inventory.price = Double(price) ?? 0.00
 
         do {
             try self.moc.save() //saves to Inventory
-            self.showEditItem = false
             print("saving...")
+            self.presentationMode.wrappedValue.dismiss()
         } catch {
             print(error.localizedDescription)
         }
@@ -87,7 +87,7 @@ struct EditItemView_Previews: PreviewProvider {
             inventory.price = 0.00
 
             return NavigationView {
-                EditItemView(inventory: inventory, showEditItem: .constant(false))
+                EditItemView(inventory: inventory)
             }
         }
     }

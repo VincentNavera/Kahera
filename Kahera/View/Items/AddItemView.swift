@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct AddItemView: View {
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
     @State private var itemName = ""
     @State private var price = ""
     @State private var qty = ""
     @State private var barcode = ""
-    @Binding var showAddItem: Bool
     var body: some View {
         VStack {
             Form {
@@ -43,7 +43,7 @@ struct AddItemView: View {
                 Spacer()
 
                 Button("Cancel") {
-                    self.showAddItem = false
+                    self.presentationMode.wrappedValue.dismiss()
                 }
                 Spacer()
             }
@@ -60,7 +60,7 @@ struct AddItemView: View {
         do {
             try self.moc.save() //saves to Inventory
 
-            self.showAddItem = false
+            self.presentationMode.wrappedValue.dismiss()
             print("saving...")
         } catch {
             print(error.localizedDescription)
@@ -71,6 +71,6 @@ struct AddItemView: View {
 
 struct addItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemView( showAddItem: .constant(true))
+        AddItemView()
     }
 }

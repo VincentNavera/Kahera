@@ -97,7 +97,6 @@
 				BD1E2DEC26B8E56B00D4DF82 /* Assets.xcassets */,
 				BD1E2DF126B8E56B00D4DF82 /* LaunchScreen.storyboard */,
 				BD1E2DF426B8E56B00D4DF82 /* Info.plist */,
-				BD1E2DE926B8E56A00D4DF82 /* Kahera.xcdatamodeld */,
 				BD1E2DEE26B8E56B00D4DF82 /* Preview Content */,
 			);
 			path = Kahera;
@@ -114,6 +113,7 @@
 		BDB3DDEA26C0CD08003C8DE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BD1E2DE926B8E56A00D4DF82 /* Kahera.xcdatamodeld */,
 				BD1A4F2926BE578300AECF7D /* CartItemModel.swift */,
 			);
 			path = Model;
