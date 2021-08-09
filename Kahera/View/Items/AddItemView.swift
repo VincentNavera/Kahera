@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct addItemView: View {
+struct AddItemView: View {
     @Environment(\.managedObjectContext) var moc
     @State private var itemName = ""
     @State private var price = ""
@@ -53,7 +53,7 @@ struct addItemView: View {
         let item = Inventory(context: self.moc)
         item.id = id
         item.name = itemName
-        item.quantity = qty
+        item.quantity = qty //qty type to be edited later
         item.price = Double(price) ?? 0.00
 
         try? self.moc.save() //saves to Inventory
@@ -65,6 +65,6 @@ struct addItemView: View {
 
 struct addItemView_Previews: PreviewProvider {
     static var previews: some View {
-        addItemView( showAddItem: .constant(true))
+        AddItemView( showAddItem: .constant(true))
     }
 }
