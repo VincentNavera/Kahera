@@ -4,6 +4,7 @@ struct CartItemView: View {
     let cartItemPrice: Double
     let cartItemName: String
     let cartItemQuantity: String
+    @State private var quantityStepper = 0
     var body: some View {
         HStack {
             HStack(spacing: 10) {
@@ -16,7 +17,7 @@ struct CartItemView: View {
                             .frame(width: 107, height: 57)
 
                     }
-                    .padding(.leading, 10)
+                    .padding(.leading, 1)
                     Text(cartItemName)
                         .detailFont()
                         .padding(.leading)
@@ -26,15 +27,21 @@ struct CartItemView: View {
             Spacer()
 
             VStack(alignment: .trailing, spacing: 0) {
+                Stepper(value: $quantityStepper) {
+
+                }
+                .padding(.trailing, 0)
                 Text("₱\(Double(cartItemPrice) , specifier: "%.2f")")
                     .largeTitleFont()
                     .offset(y: 5)
+                    .padding(.trailing, 10)
                 Spacer()
                 Text("QTY: x\(cartItemQuantity)")
                     .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
                     .detailFont()
+                    .padding(.trailing, 10)
 
-            }.padding(.trailing, 10)
+            }
 
         }.offset(x: 0)
 
