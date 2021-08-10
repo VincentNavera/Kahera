@@ -16,7 +16,6 @@ struct ItemView: View {
     @State private var animationAmount: CGFloat = 1
     @State private var tappedCard = ""
     @State private var showAddToCart = false //to be used later for add to cart animation
-    @State private var prices = [Double]()
     @State private var showActions = false
     @State private var showEditItem = false
     var item: Inventory
@@ -60,12 +59,12 @@ struct ItemView: View {
             animationAmount += 0.3
             showAddToCart = true //for later
 
-            prices += [item.price] //to store prices of the items added to cart; to get the total price
-            print(prices)
+            self.cart.prices.insert(item.price, at: 0) //to store prices of the items added to cart; to get the total price
+            print(cart.prices)
+            self.cart.totalPrice = cart.prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
 
-            self.cart.totalPrice = prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
+//            self.cart.totalPrice = prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
 
-            print(cart.totalPrice)
 
 
 

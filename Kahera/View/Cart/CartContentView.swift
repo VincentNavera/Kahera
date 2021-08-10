@@ -135,7 +135,11 @@ struct CartContentView: View {
         }
     }
     func deleteItems(at offsets: IndexSet) {
-        cart.items.remove(atOffsets: offsets)
+        cart.items.remove(atOffsets: offsets) //deletes swiped item from cart.items array
+        cart.prices.remove(atOffsets: offsets) //deletes swiped item price from cart.prices array
+        self.cart.totalPrice = cart.prices.reduce(0, +) //re-adds the prices from prices array and store it to the cart since cart.prices array has been changed
+        print(cart.prices)
+        print(cart.items)
     }
 }
 

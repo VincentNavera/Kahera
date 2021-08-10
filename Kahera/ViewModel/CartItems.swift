@@ -11,4 +11,8 @@ class CartItems: ObservableObject {
     @Published var items = [CartItemModel]()
     @Published var totalPrice = 0.00
 
+    @Published var prices = [Double]()
+
+
+
 }
