@@ -1,9 +1,26 @@
 import SwiftUI
 
 struct CartItemView: View {
+
+    @ObservedObject var cart: CartItems
     let cartItemPrice: Double
     let cartItemName: String
-    let cartItemQuantity: String
+    let cartItemQuantity: Int
+    @State private var oldValue = 0
+    @State private var newValue = 0
+
+    @State var changeInQuantity: Int {
+        didSet {
+            newValue = changeInQuantity
+        }
+
+        willSet{
+            oldValue = changeInQuantity
+
+        }
+
+    }
+
     @State private var quantityStepper = 0
     var body: some View {
         HStack {
@@ -27,7 +44,7 @@ struct CartItemView: View {
             Spacer()
 
             VStack(alignment: .trailing, spacing: 0) {
-                Stepper(value: $quantityStepper) {
+                Stepper(value: $quantityStepper.onChange(changeInTotalPrice)) {
 
                 }
                 .padding(.trailing, 0)
@@ -36,21 +53,34 @@ struct CartItemView: View {
                     .offset(y: 5)
                     .padding(.trailing, 10)
                 Spacer()
-                Text("QTY: x\(cartItemQuantity)")
+                Text("QTY: x\(changeInQuantity)")
                     .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
                     .detailFont()
                     .padding(.trailing, 10)
+
 
             }
 
         }.offset(x: 0)
 
     }
+    func changeInTotalPrice(_ value: Int) {
+        changeInQuantity = cartItemQuantity + quantityStepper
+        if newValue > oldValue {
+            self.cart.totalPrice += cartItemPrice
+        } else {
+            self.cart.totalPrice -= cartItemPrice
+        }
+        print(oldValue, newValue)
+
+
+
+    }
 }
 
 struct CartItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemView(cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: "1")
+        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: 1, changeInQuantity: 1)
             .previewLayout(.fixed(width: 475, height: 100))
     }
 }

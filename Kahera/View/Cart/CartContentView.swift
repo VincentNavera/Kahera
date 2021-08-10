@@ -22,7 +22,8 @@ struct CartContentView: View {
 
             Section {
                     ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
-                        CartItemView(cartItemPrice: item.price, cartItemName: item.name, cartItemQuantity: item.quantity)
+                        CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, cartItemQuantity: 1, changeInQuantity: 1)
+                        
                     }
                     .onDelete(perform: deleteItems)
                 
