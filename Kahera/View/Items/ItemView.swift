@@ -63,10 +63,6 @@ struct ItemView: View {
             print(cart.prices)
             self.cart.totalPrice = cart.prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
 
-//            self.cart.totalPrice = prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
-
-
-
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 animationAmount = 1

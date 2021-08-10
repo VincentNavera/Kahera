@@ -13,19 +13,16 @@ struct CartItemView: View {
         didSet {
             newValue = changeInQuantity
         }
-
         willSet{
             oldValue = changeInQuantity
-
         }
-
     }
 
     @State private var quantityStepper = 0
     var body: some View {
         HStack {
             HStack(spacing: 10) {
-                VStack(alignment: .leading) { 
+                VStack(alignment: .leading) {
                     ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
 
                         Image(systemName: "photo.fill.on.rectangle.fill")
@@ -47,16 +44,18 @@ struct CartItemView: View {
                 Stepper(value: $quantityStepper.onChange(changeInTotalPrice)) {
 
                 }
-                .padding(.trailing, 0)
+                .scaleEffect(0.7)
+                .offset(x: 45, y: -3)
+
                 Text("₱\(Double(cartItemPrice) , specifier: "%.2f")")
                     .largeTitleFont()
-                    .offset(y: 5)
+
                     .padding(.trailing, 10)
-                Spacer()
-                Text("QTY: x\(changeInQuantity)")
+                Text("Quantity: x\(changeInQuantity)")
                     .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
                     .detailFont()
                     .padding(.trailing, 10)
+                Spacer()
 
 
             }
