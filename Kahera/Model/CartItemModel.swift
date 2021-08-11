@@ -13,6 +13,6 @@ struct CartItemModel: Identifiable, Equatable {
     let id = UUID()
     let name: String
     let price: Double
-    let quantity: String
+    var quantity: Int
 
 }

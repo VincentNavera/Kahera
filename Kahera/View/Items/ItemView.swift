@@ -55,7 +55,7 @@ struct ItemView: View {
             self.showCart = true
 
             withAnimation{
-                self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: "1"), at: 0) //adds to Cart
+                self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1), at: 0) //adds to Cart
 
                 self.cart.prices.insert(item.price, at: 0) //to store prices of the items added to cart; to get the total price
                 print(cart.prices)

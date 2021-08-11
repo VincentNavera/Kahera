@@ -70,12 +70,14 @@ struct CartItemView: View {
 
     }
     func changeInTotalPrice(_ value: Int) {
-        changeInQuantity = cartItemQuantity + quantityStepper
+        changeInQuantity = cartItemQuantity + quantityStepper //changeInQuantity for display since current cart item can be deleted and will cause out of range index if it was
         if newValue > oldValue {
             self.cart.totalPrice += cartItemPrice
+            cart.items[cartItemIndex].quantity += 1
         }
         else if newValue < oldValue {
             self.cart.totalPrice -= cartItemPrice
+            cart.items[cartItemIndex].quantity -= 1
         }
         print(oldValue, newValue)
         withAnimation {
