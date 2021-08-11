@@ -10,6 +10,7 @@ import SwiftUI
 struct CartContentView: View {
     @ObservedObject var cart: CartItems //monitors the CartItems object for changes
     @State private var cash = ""
+    @State private var taxPercentage = 12
 
     var body: some View {
         Form {
@@ -56,19 +57,24 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱\(cart.totalPrice - (0.12 * cart.totalPrice), specifier: "%.2f")")
+                    Text("₱\(cart.totalPrice - ((Double(taxPercentage) / 100.00) * cart.totalPrice), specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
 
                 HStack {
 
-                    Text("VAT (12%):")
+                    Text("VAT (\(taxPercentage)%):")
                         .foregroundColor(.gray)
                         .detailFont()
+                    Stepper(value: $taxPercentage) {
+
+                    }
+                    .scaleEffect(0.7)
+                    .offset(x: -95, y: 0)
 
                     Spacer()
-                    Text("₱\(0.12 * cart.totalPrice, specifier: "%.2f")")
+                    Text("₱\((Double(taxPercentage) / 100.00) * cart.totalPrice, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
 

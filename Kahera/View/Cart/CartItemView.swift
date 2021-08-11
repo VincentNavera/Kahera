@@ -65,7 +65,8 @@ struct CartItemView: View {
 
             }
 
-        }.offset(x: 0)
+        }
+        .offset(x: 0)
 
     }
     func changeInTotalPrice(_ value: Int) {
