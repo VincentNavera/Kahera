@@ -128,6 +128,7 @@ struct CartContentView: View {
                     Spacer()
                     TextField("₱0.00", text: $cash)
                         .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
                         .textFieldStyle(.roundedBorder)
 
 
