@@ -30,7 +30,6 @@ struct CartContentView: View {
                     .onDelete(perform: deleteItems)
                 
             }
-            .frame(height: 100)
             
 
 
@@ -68,7 +67,7 @@ struct CartContentView: View {
                     Text("VAT (\(taxPercentage)%):")
                         .foregroundColor(.gray)
                         .detailFont()
-                    Stepper(value: $taxPercentage) {
+                    Stepper(value: $taxPercentage, in: 1...9999999) {
 
                     }
                     .scaleEffect(0.5)
@@ -108,7 +107,7 @@ struct CartContentView: View {
                     Text("SC/PWD Discount (\(discountPercentage)%): ")
                         .foregroundColor(.gray)
                         .detailFont()
-                    Stepper(value: $discountPercentage) {
+                    Stepper(value: $discountPercentage, in: 1...9999999) {
 
                     }
                     .scaleEffect(0.5)

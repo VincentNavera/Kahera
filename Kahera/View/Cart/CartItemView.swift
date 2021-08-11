@@ -78,10 +78,12 @@ struct CartItemView: View {
             self.cart.totalPrice -= cartItemPrice
         }
         print(oldValue, newValue)
-        if changeInQuantity == 0 {
-            cart.items.removeAll {$0.id == cartItemID}
-            cart.prices.remove(at: cartItemIndex)
-            print(cart.prices)
+        withAnimation {
+            if changeInQuantity == 0 {
+                cart.items.removeAll {$0.id == cartItemID} //removes the item from the cart when qty reaches zero using item id
+                cart.prices.remove(at: cartItemIndex) //removes item from cart prices array using cart item index
+                print(cart.prices)
+            }
         }
 
 

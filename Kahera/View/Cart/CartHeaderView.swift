@@ -19,9 +19,12 @@ struct CartHeaderView: View {
                 .font(Font.system(size: 24, weight: .regular))
                 .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
                 .onTapGesture {
-                    cart.items = []
-                    cart.prices = []
-                    cart.totalPrice = 0.00
+                    withAnimation {
+                        cart.items = []
+                        cart.prices = []
+                        cart.totalPrice = 0.00
+                    }
+
                 }
         }
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))

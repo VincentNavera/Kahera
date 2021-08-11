@@ -15,7 +15,6 @@ struct ItemView: View {
     @ObservedObject var cart: CartItems
     @State private var animationAmount: CGFloat = 1
     @State private var tappedCard = ""
-    @State private var showAddToCart = false //to be used later for add to cart animation
     @State private var showActions = false
     @State private var showEditItem = false
     @Binding var showCart: Bool
@@ -55,20 +54,18 @@ struct ItemView: View {
         .onTapGesture {
             self.showCart = true
 
-            self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: "1"), at: 0) //adds to Cart
+            withAnimation{
+                self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: "1"), at: 0) //adds to Cart
 
+                self.cart.prices.insert(item.price, at: 0) //to store prices of the items added to cart; to get the total price
+                print(cart.prices)
+                self.cart.totalPrice = cart.prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
+            }
 
             animationAmount += 0.3
-            showAddToCart = true //for later
-
-            self.cart.prices.insert(item.price, at: 0) //to store prices of the items added to cart; to get the total price
-            print(cart.prices)
-            self.cart.totalPrice = cart.prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
-
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 animationAmount = 1
-                showAddToCart = false
             }
         }
         .onLongPressGesture{
