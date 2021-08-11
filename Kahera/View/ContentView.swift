@@ -18,7 +18,7 @@ struct ContentView: View {
                         .transition(.move(edge: .leading))
                 }
 
-                ItemsView(cart: cart)
+                ItemsView(cart: cart, showCart: $showCart)
                     .animation(.easeIn(duration: 0.3))
             }
             HStack {

@@ -18,6 +18,7 @@ struct ItemView: View {
     @State private var showAddToCart = false //to be used later for add to cart animation
     @State private var showActions = false
     @State private var showEditItem = false
+    @Binding var showCart: Bool
     var item: Inventory
 
     var body: some View {
@@ -52,6 +53,7 @@ struct ItemView: View {
         .animation(.spring())
 
         .onTapGesture {
+            self.showCart = true
 
             self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: "1"), at: 0) //adds to Cart
 
@@ -95,7 +97,7 @@ struct ItemView: View {
 }
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(itemLabel: "Item", priceLabel: 9999.99, cart: CartItems(), item: Inventory())
+        ItemView(itemLabel: "Item", priceLabel: 9999.99, cart: CartItems(), showCart: .constant(false), item: Inventory())
             .previewLayout(.sizeThatFits)
 
 

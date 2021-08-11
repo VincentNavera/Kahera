@@ -11,6 +11,7 @@ struct ItemsContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Inventory.entity(), sortDescriptors: []) var inventory: FetchedResults<Inventory>
     @StateObject var cart = CartItems() //this creates and owns the CartItems object
+    @Binding var showCart: Bool
     
     
 
@@ -21,7 +22,7 @@ struct ItemsContentView: View {
                 ForEach(inventory, id: \.id) { item in
                     ZStack {
 
-                        ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price, cart: cart, item: item)
+                        ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price, cart: cart, showCart: $showCart, item: item)
 
 
                     }
@@ -40,6 +41,6 @@ struct ItemsContentView: View {
 
 struct ItemsContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemsContentView(cart: CartItems())
+        ItemsContentView(cart: CartItems(), showCart: .constant(false))
     }
 }
