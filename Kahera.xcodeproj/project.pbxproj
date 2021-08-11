@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BD152C3026C36240002465FD /* CustomColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD152C2F26C36240002465FD /* CustomColorInHex.swift */; };
+		BD152C3526C3A31B002465FD /* Sales+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */; };
+		BD152C3626C3A31B002465FD /* Sales+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */; };
+		BD152C3726C3A31B002465FD /* CheckOutItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */; };
+		BD152C3826C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */; };
 		BD1A4F2A26BE578300AECF7D /* CartItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A4F2926BE578300AECF7D /* CartItemModel.swift */; };
 		BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */; };
 		BD1E2DE626B8E56A00D4DF82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DE526B8E56A00D4DF82 /* SceneDelegate.swift */; };
@@ -34,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		BD152C2F26C36240002465FD /* CustomColorInHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorInHex.swift; sourceTree = "<group>"; };
+		BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sales+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sales+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckOutItems+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckOutItems+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BD1A4F2926BE578300AECF7D /* CartItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemModel.swift; sourceTree = "<group>"; };
 		BD1E2DE026B8E56A00D4DF82 /* Kahera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kahera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +99,10 @@
 		BD1E2DE226B8E56A00D4DF82 /* Kahera */ = {
 			isa = PBXGroup;
 			children = (
+				BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */,
+				BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */,
+				BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */,
+				BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */,
 				BD1E2DFA26B8E61600D4DF82 /* Kahera.entitlements */,
 				BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */,
 				BD1E2DE526B8E56A00D4DF82 /* SceneDelegate.swift */,
@@ -250,6 +262,8 @@
 				BDCDAB9226BBBAFD00F48A00 /* CartView.swift in Sources */,
 				BDCDAB8E26BBB90F00F48A00 /* CartTotalView.swift in Sources */,
 				BDCDAB8C26BBA98500F48A00 /* CartContentView.swift in Sources */,
+				BD152C3826C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift in Sources */,
+				BD152C3626C3A31B002465FD /* Sales+CoreDataProperties.swift in Sources */,
 				BDCDAB8A26BB8D6100F48A00 /* CartItemView.swift in Sources */,
 				BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */,
 				BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */,
@@ -266,6 +280,8 @@
 				BD1E2DEB26B8E56A00D4DF82 /* Kahera.xcdatamodeld in Sources */,
 				BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */,
 				BD89E18E26BD3F75000413EE /* AddItemView.swift in Sources */,
+				BD152C3526C3A31B002465FD /* Sales+CoreDataClass.swift in Sources */,
+				BD152C3726C3A31B002465FD /* CheckOutItems+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

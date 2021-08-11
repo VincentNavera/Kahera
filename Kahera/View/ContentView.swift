@@ -46,8 +46,12 @@ struct ContentView: View {
 
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(cart: CartItems())
-           .previewLayout(.fixed(width: 1024, height: 768))
+        if #available(iOS 15.0, *) {
+            ContentView(cart: CartItems())
+                .previewInterfaceOrientation(.landscapeRight)
+        } else {
+            // Fallback on earlier versions
+        }
            // iPad Mini landscape size
     }
 }

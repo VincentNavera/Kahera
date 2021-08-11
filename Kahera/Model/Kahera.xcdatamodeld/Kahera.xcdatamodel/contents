@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19186" systemVersion="21A5294g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CheckOutItems" representedClassName="CheckOutItems" syncable="YES">
+        <attribute name="barcode" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sales" inverseName="items" inverseEntity="Sales"/>
+    </entity>
     <entity name="Inventory" representedClassName="Inventory" syncable="YES" codeGenerationType="class">
         <attribute name="barcode" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -19,7 +26,27 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Sales" representedClassName="Sales" syncable="YES">
+        <attribute name="cash" optional="YES" attributeType="String"/>
+        <attribute name="change" optional="YES" attributeType="String"/>
+        <attribute name="customerName" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="discount" optional="YES" attributeType="String"/>
+        <attribute name="tax" optional="YES" attributeType="String"/>
+        <attribute name="taxableSales" optional="YES" attributeType="String"/>
+        <attribute name="taxExempt" optional="YES" attributeType="String"/>
+        <attribute name="taxExemptSales" optional="YES" attributeType="String"/>
+        <attribute name="total" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CheckOutItems" inverseName="transaction" inverseEntity="CheckOutItems"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="date"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <elements>
         <element name="Inventory" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Sales" positionX="-63" positionY="27" width="128" height="194"/>
+        <element name="CheckOutItems" positionX="-54" positionY="99" width="128" height="104"/>
     </elements>
 </model>
