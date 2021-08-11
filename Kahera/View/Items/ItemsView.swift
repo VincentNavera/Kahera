@@ -14,7 +14,7 @@ struct ItemsView: View {
             HeaderView()
             ItemsContentView(cart: cart)
         }
-        .background(Color(.displayP3, red: 248/255, green: 250/255, blue: 251/255, opacity: 1.0))
+        .background(Color(hex: "F8FAFB"))
     }
 }
 

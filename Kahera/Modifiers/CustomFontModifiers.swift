@@ -12,7 +12,6 @@ struct LargeTitleModifier: ViewModifier {
         func body(content: Content) -> some View {
             content
                 .font(Font.system(size: 35, weight: .bold, design: .rounded))
-                .foregroundColor(.black)
     }
 }
 
@@ -29,7 +28,6 @@ struct TitleModifier: ViewModifier {
         func body(content: Content) -> some View {
             content
                 .font(Font.system(size: 24, weight: .bold, design: .rounded))
-                .foregroundColor(.black)
     }
 }
 
@@ -45,7 +43,6 @@ struct DetailModifier: ViewModifier {
         func body(content: Content) -> some View {
             content
                 .font(Font.system(size: 18, weight: .semibold, design: .rounded))
-                .foregroundColor(.black)
     }
 }
 
@@ -62,7 +59,6 @@ struct SubtitleModifier: ViewModifier {
         func body(content: Content) -> some View {
             content
                 .font(Font.system(size: 16, weight: .medium, design: .rounded))
-                .foregroundColor(.black)
     }
 }
 

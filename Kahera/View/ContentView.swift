@@ -25,7 +25,6 @@ struct ContentView: View {
                 VStack {
                     Image(systemName: "sidebar.left")
                         .font(Font.system(size: 24, weight: .regular))
-                        .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
                         .onTapGesture {
                             withAnimation(.spring()){
                                 showCart.toggle()}
@@ -38,6 +37,7 @@ struct ContentView: View {
             .padding()
             .padding()
         }
+        .foregroundColor(Color(hex: "414243"))
         .preferredColorScheme(.light)
 
         .ignoresSafeArea()

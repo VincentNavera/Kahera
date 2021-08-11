@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD152C3026C36240002465FD /* CustomColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD152C2F26C36240002465FD /* CustomColorInHex.swift */; };
 		BD1A4F2A26BE578300AECF7D /* CartItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A4F2926BE578300AECF7D /* CartItemModel.swift */; };
 		BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */; };
 		BD1E2DE626B8E56A00D4DF82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DE526B8E56A00D4DF82 /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD152C2F26C36240002465FD /* CustomColorInHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorInHex.swift; sourceTree = "<group>"; };
 		BD1A4F2926BE578300AECF7D /* CartItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemModel.swift; sourceTree = "<group>"; };
 		BD1E2DE026B8E56A00D4DF82 /* Kahera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kahera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */,
+				BD152C2F26C36240002465FD /* CustomColorInHex.swift */,
 				BD414A8F26C2752E00648E4B /* CustomOnChangeModifier.swift */,
 			);
 			path = Modifiers;
@@ -250,6 +253,7 @@
 				BDCDAB8A26BB8D6100F48A00 /* CartItemView.swift in Sources */,
 				BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */,
 				BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */,
+				BD152C3026C36240002465FD /* CustomColorInHex.swift in Sources */,
 				BD9EDF5126BE71E700685C6F /* CartItems.swift in Sources */,
 				BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */,
 				BD1E2DE626B8E56A00D4DF82 /* SceneDelegate.swift in Sources */,

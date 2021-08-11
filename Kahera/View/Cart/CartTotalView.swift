@@ -14,7 +14,6 @@ struct CartTotalView: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
                     .frame(height: 70)
 
                 HStack {
