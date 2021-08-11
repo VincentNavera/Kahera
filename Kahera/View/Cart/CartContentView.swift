@@ -11,6 +11,7 @@ struct CartContentView: View {
     @ObservedObject var cart: CartItems //monitors the CartItems object for changes
     @State private var cash = ""
     @State private var taxPercentage = 12
+    @State private var discountPercentage = 20
 
     var body: some View {
         Form {
@@ -70,7 +71,7 @@ struct CartContentView: View {
                     Stepper(value: $taxPercentage) {
 
                     }
-                    .scaleEffect(0.7)
+                    .scaleEffect(0.5)
                     .offset(x: -95, y: 0)
 
                     Spacer()
@@ -104,10 +105,15 @@ struct CartContentView: View {
                 }
                 HStack {
 
-                    Text("SC/PWD Discount (20%): ")
+                    Text("SC/PWD Discount (\(discountPercentage)%): ")
                         .foregroundColor(.gray)
-
                         .detailFont()
+                    Stepper(value: $discountPercentage) {
+
+                    }
+                    .scaleEffect(0.5)
+                    .offset(x: -70, y: 0)
+
 
                     Spacer()
                     Text("₱0.00")
