@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartItemModel: Identifiable {
+struct CartItemModel: Identifiable, Equatable {
 
 
     let id = UUID()

@@ -6,6 +6,8 @@ struct CartItemView: View {
     let cartItemPrice: Double
     let cartItemName: String
     let cartItemQuantity: Int
+    let cartItemID: UUID
+    let cartItemIndex: Int
     @State private var oldValue = 0
     @State private var newValue = 0
 
@@ -41,11 +43,14 @@ struct CartItemView: View {
             Spacer()
 
             VStack(alignment: .trailing, spacing: 0) {
+
                 Stepper(value: $quantityStepper.onChange(changeInTotalPrice)) {
 
                 }
                 .scaleEffect(0.7)
                 .offset(x: 45, y: -3)
+
+
 
                 Text("₱\(Double(cartItemPrice) , specifier: "%.2f")")
                     .largeTitleFont()
@@ -67,10 +72,16 @@ struct CartItemView: View {
         changeInQuantity = cartItemQuantity + quantityStepper
         if newValue > oldValue {
             self.cart.totalPrice += cartItemPrice
-        } else {
+        }
+        else if newValue < oldValue {
             self.cart.totalPrice -= cartItemPrice
         }
         print(oldValue, newValue)
+        if changeInQuantity == 0 {
+            cart.items.removeAll {$0.id == cartItemID}
+            cart.prices.remove(at: cartItemIndex)
+            print(cart.prices)
+        }
 
 
 
@@ -79,7 +90,7 @@ struct CartItemView: View {
 
 struct CartItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: 1, changeInQuantity: 1)
+        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: 1, cartItemID: UUID(), cartItemIndex: 0, changeInQuantity: 1)
             .previewLayout(.fixed(width: 475, height: 100))
     }
 }
