@@ -22,6 +22,20 @@ extension CheckOutItems {
     @NSManaged public var barcode: String?
     @NSManaged public var transaction: NSSet?
 
+    public var wrappedName: String {
+        name ?? "No Item Name"
+    }
+    public var wrappedBarcode: String {
+        barcode ?? "000000000000"
+    }
+
+    public var transactionArray: [Sales] {
+        let set = transaction as? Set<Sales> ?? []
+        return set.sorted {
+            $0.wrappedDate < $1.wrappedDate
+        }
+    }
+
 }
 
 // MARK: Generated accessors for transaction

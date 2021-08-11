@@ -28,6 +28,39 @@ extension Sales {
     @NSManaged public var taxExemptSales: String?
     @NSManaged public var items: CheckOutItems?
 
+    public var wrappedDate: Date {
+        date ?? Date()
+    }
+
+    public var wrappedtaxableSales: String {
+        taxableSales ?? "0.00"
+    }
+
+    public var wrappedTax: String {
+        tax ?? "0.00"
+    }
+
+    public var wrappedCash: String {
+        cash ?? "0.00"
+    }
+    public var wrappedChange: String {
+        change ?? "0.00"
+    }
+    public var wrappedDiscount: String {
+        discount ?? "0.00"
+    }
+
+    public var wrappedTaxExempt: String {
+        taxExempt ?? "0.00"
+    }
+    public var wrappedTaxExemptSales: String {
+        taxExemptSales ?? "0.00"
+    }
+    public var wrappedCustomerName: String {
+        customerName ?? "No name was provided"
+    }
+    
+
 }
 
 extension Sales : Identifiable {

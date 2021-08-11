@@ -38,10 +38,10 @@
 
 /* Begin PBXFileReference section */
 		BD152C2F26C36240002465FD /* CustomColorInHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorInHex.swift; sourceTree = "<group>"; };
-		BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sales+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sales+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckOutItems+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckOutItems+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Sales+CoreDataClass.swift"; path = "Kahera/Model/Sales+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Sales+CoreDataProperties.swift"; path = "Kahera/Model/Sales+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CheckOutItems+CoreDataClass.swift"; path = "Kahera/Model/CheckOutItems+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CheckOutItems+CoreDataProperties.swift"; path = "Kahera/Model/CheckOutItems+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BD1A4F2926BE578300AECF7D /* CartItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemModel.swift; sourceTree = "<group>"; };
 		BD1E2DE026B8E56A00D4DF82 /* Kahera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kahera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,10 +99,6 @@
 		BD1E2DE226B8E56A00D4DF82 /* Kahera */ = {
 			isa = PBXGroup;
 			children = (
-				BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */,
-				BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */,
-				BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */,
-				BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */,
 				BD1E2DFA26B8E61600D4DF82 /* Kahera.entitlements */,
 				BD1E2DE326B8E56A00D4DF82 /* AppDelegate.swift */,
 				BD1E2DE526B8E56A00D4DF82 /* SceneDelegate.swift */,
@@ -140,6 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				BD1E2DE926B8E56A00D4DF82 /* Kahera.xcdatamodeld */,
+				BD152C3126C3A31B002465FD /* Sales+CoreDataClass.swift */,
+				BD152C3226C3A31B002465FD /* Sales+CoreDataProperties.swift */,
+				BD152C3326C3A31B002465FD /* CheckOutItems+CoreDataClass.swift */,
+				BD152C3426C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift */,
 				BD1A4F2926BE578300AECF7D /* CartItemModel.swift */,
 			);
 			path = Model;
