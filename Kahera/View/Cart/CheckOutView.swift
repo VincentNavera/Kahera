@@ -50,6 +50,10 @@ struct CheckOutView: View {
 
     }
 
+    func checkOutItems() {
+    
+    }
+
     func emptyCart() {
         withAnimation {
             cart.items = []

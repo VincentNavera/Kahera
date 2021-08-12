@@ -20,16 +20,24 @@ class CartItems: ObservableObject {
         return array.reduce(0, +)
     }
 
+    @Published var taxPercentage = 12
+    @Published var discountPercentage = 20
 
     @Published var date = Date()
     @Published var total = 0.00
-    @Published var taxableSales = ""
-    @Published var tax = ""
+    var taxableSales: Double {
+        return self.totalPrice - ((Double(self.taxPercentage) / 100.00) * self.totalPrice)
+    }
+    var tax: Double {
+        return (Double(self.taxPercentage) / 100.00) * self.totalPrice
+    }
     @Published var cash = ""
-    @Published var change = ""
+    var change: Double {
+       return (Double(cash) ?? 0.00) - totalPrice
+    }
     @Published var discount = ""
     @Published var taxExempt = ""
-    @Published var customerName = ""
+    @Published var customerName = "Customer Name"
     @Published var taxExemptSales = ""
     @Published var deliveryFee = ""
 
