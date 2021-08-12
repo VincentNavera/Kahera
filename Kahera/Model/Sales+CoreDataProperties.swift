@@ -26,7 +26,8 @@ extension Sales {
     @NSManaged public var taxExempt: String?
     @NSManaged public var customerName: String?
     @NSManaged public var taxExemptSales: String?
-    @NSManaged public var items: CheckOutItems?
+    @NSManaged public var deliveryFee: String?
+    @NSManaged public var items: NSSet?
 
     public var wrappedDate: Date {
         date ?? Date()
@@ -58,6 +59,16 @@ extension Sales {
     }
     public var wrappedCustomerName: String {
         customerName ?? "No name was provided"
+    }
+    public var wrappedDeliveryFee: String {
+        deliveryFee ?? "0.00"
+    }
+
+    public var itemsArray: [CheckOutItems] {
+        let set = items as? Set<CheckOutItems> ?? []
+        return set.sorted {
+            $0.wrappedName < $1.wrappedName
+        }
     }
     
 

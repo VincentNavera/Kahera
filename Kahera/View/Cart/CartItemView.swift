@@ -5,6 +5,7 @@ struct CartItemView: View {
     @ObservedObject var cart: CartItems
     let cartItemPrice: Double
     let cartItemName: String
+    @State private var animationAmount: CGFloat = 1
 
     var body: some View {
         HStack {
@@ -48,6 +49,8 @@ struct CartItemView: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
                     .detailFont()
                     .padding(.trailing, 10)
+                    .scaleEffect(animationAmount)
+                    .animation(.default)
                 }
                 Spacer()
 
@@ -57,16 +60,24 @@ struct CartItemView: View {
         }
         .offset(x: 0)
 
+
     }
     func incrementStep() {
 
         cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity += 1
-        
+        animationAmount += 0.3
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.animationAmount = 1
+        }
 
     }
     func decrementStep() {
 
         cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity -= 1
+        animationAmount += 0.3
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.animationAmount = 1
+        }
 
         withAnimation {
             if cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 {

@@ -20,7 +20,7 @@ extension CheckOutItems {
     @NSManaged public var quantity: Int16
     @NSManaged public var price: Double
     @NSManaged public var barcode: String?
-    @NSManaged public var transaction: NSSet?
+    @NSManaged public var transaction: Sales?
 
     public var wrappedName: String {
         name ?? "No Item Name"
@@ -29,12 +29,7 @@ extension CheckOutItems {
         barcode ?? "000000000000"
     }
 
-    public var transactionArray: [Sales] {
-        let set = transaction as? Set<Sales> ?? []
-        return set.sorted {
-            $0.wrappedDate < $1.wrappedDate
-        }
-    }
+    
 
 }
 
