@@ -5,13 +5,7 @@ struct CartItemView: View {
     @ObservedObject var cart: CartItems
     let cartItemPrice: Double
     let cartItemName: String
-    let cartItemQuantity: Int
-    let cartItemID: UUID
-    let cartItemIndex: Int
 
-    @State var changeInQuantity: Int
-
-    @State private var quantityStepper = 0
     var body: some View {
         HStack {
             HStack(spacing: 10) {
@@ -39,7 +33,7 @@ struct CartItemView: View {
                 Stepper("", onIncrement: incrementStep, onDecrement: decrementStep)
                 .scaleEffect(0.7)
                 .offset(x: 45, y: -3)
-                .disabled(changeInQuantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
+                .disabled(cart.items.contains(where: { $0.name == cartItemName }) && cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
 
 
 
@@ -65,19 +59,18 @@ struct CartItemView: View {
 
     }
     func incrementStep() {
-        quantityStepper += 1
 
-        cart.items[cartItemIndex].quantity += 1
+        cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity += 1
+        
 
     }
     func decrementStep() {
-        quantityStepper -= 1
 
-        cart.items[cartItemIndex].quantity -= 1
+        cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity -= 1
 
         withAnimation {
             if cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 {
-                cart.items.removeAll {$0.id == cartItemID} //removes the item from the cart when qty reaches zero using item id
+                cart.items.removeAll {$0.name == cartItemName} //removes the item from the cart when qty reaches zero using item name
 
             }
         }
@@ -88,7 +81,7 @@ struct CartItemView: View {
 
 struct CartItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", cartItemQuantity: 1, cartItemID: UUID(), cartItemIndex: 0, changeInQuantity: 1)
+        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name")
             .previewLayout(.fixed(width: 475, height: 100))
     }
 }

@@ -24,15 +24,13 @@ struct CartContentView: View {
 
             Section {
                     ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
-                        CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, cartItemQuantity: 1, cartItemID: item.id, cartItemIndex: cart.items.firstIndex(of: item)!, changeInQuantity: item.quantity)
+                        CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name)
                         
                     }
                     .onDelete(perform: deleteItems)
                 
             }
             
-
-
 
 
             Section {
@@ -149,11 +147,7 @@ struct CartContentView: View {
         }
     }
     func deleteItems(at offsets: IndexSet) {
-        cart.items.remove(atOffsets: offsets)
-
-
-        //deletes swiped item from cart.items array
-   //re-adds the prices from prices array and store it to the cart since cart.prices array has been changed
+        cart.items.remove(atOffsets: offsets) //deletes swiped item from cart.items array
 
 
     }
