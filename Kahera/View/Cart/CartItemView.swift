@@ -47,8 +47,10 @@ struct CartItemView: View {
                 Stepper(value: $quantityStepper.onChange(changeInTotalPrice)) {
 
                 }
+
                 .scaleEffect(0.7)
                 .offset(x: 45, y: -3)
+                .disabled(changeInQuantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
 
 
 

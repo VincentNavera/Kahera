@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CheckOutView: View {
+    @ObservedObject var cart: CartItems
     @State private var animationAmount: CGFloat = 1
     @State private var showAlert = false
     var body: some View {
@@ -40,18 +41,25 @@ struct CheckOutView: View {
             }
 
         }
-        .alert(isPresented: $showAlert, content: { Alert(title: Text("Confirm Purchase"), primaryButton: .default(Text("Confirm")), secondaryButton: .cancel() {
-
+        .alert(isPresented: $showAlert, content: { Alert(title: Text("Confirm Purchase"), primaryButton: .default(Text("Confirm")) {emptyCart()}, secondaryButton: .cancel() {
 
         })
 
         })
 
     }
+
+    func emptyCart() {
+        withAnimation {
+            cart.items = []
+            cart.prices = []
+            cart.totalPrice = 0.00
+        }
+    }
 }
 
 struct CheckOutView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckOutView()
+        CheckOutView(cart: CartItems())
     }
 }
