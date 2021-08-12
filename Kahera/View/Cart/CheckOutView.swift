@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CheckOutView: View {
     @State private var animationAmount: CGFloat = 1
+    @State private var showAlert = false
     var body: some View {
         HStack {
             ZStack {
@@ -32,17 +33,19 @@ struct CheckOutView: View {
 
         .onTapGesture {
             self.animationAmount += 0.3
+            self.showAlert.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 self.animationAmount = 1
 
             }
 
         }
+        .alert(isPresented: $showAlert, content: { Alert(title: Text("Confirm Purchase"), primaryButton: .default(Text("Confirm")), secondaryButton: .cancel() {
 
 
+        })
 
-
-
+        })
 
     }
 }
