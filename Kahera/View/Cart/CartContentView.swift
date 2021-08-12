@@ -145,6 +145,7 @@ struct CartContentView: View {
 
 
             }
+            CartTotalView(cart: cart)
         }
     }
     func deleteItems(at offsets: IndexSet) {
