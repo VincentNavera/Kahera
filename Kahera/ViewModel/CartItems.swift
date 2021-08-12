@@ -21,6 +21,19 @@ class CartItems: ObservableObject {
     }
 
 
+    @Published var date = Date()
+    @Published var total = 0.00
+    @Published var taxableSales = ""
+    @Published var tax = ""
+    @Published var cash = ""
+    @Published var change = ""
+    @Published var discount = ""
+    @Published var taxExempt = ""
+    @Published var customerName = ""
+    @Published var taxExemptSales = ""
+    @Published var deliveryFee = ""
+
+
 
 
 }
