@@ -53,8 +53,7 @@ struct CheckOutView: View {
     func emptyCart() {
         withAnimation {
             cart.items = []
-            cart.prices = []
-            cart.totalPrice = 0.00
+           
         }
     }
 }

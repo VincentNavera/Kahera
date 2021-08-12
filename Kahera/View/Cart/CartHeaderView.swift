@@ -21,8 +21,7 @@ struct CartHeaderView: View {
                 .onTapGesture {
                     withAnimation {
                         cart.items = []
-                        cart.prices = []
-                        cart.totalPrice = 0.00
+
                     }
 
                 }

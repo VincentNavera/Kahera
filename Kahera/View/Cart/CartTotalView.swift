@@ -17,7 +17,7 @@ struct CartTotalView: View {
                         .titleFont()
                     Spacer()
 
-                    Text("₱\(cart.totalPrice, specifier: "%.2f")")
+                    Text("₱\(self.cart.totalPrice, specifier: "%.2f")")
 
                         .titleFont()
                 }

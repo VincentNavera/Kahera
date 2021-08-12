@@ -24,7 +24,6 @@ struct ItemsContentView: View {
 
                         ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price, cart: cart, showCart: $showCart, item: item)
 
-
                     }
 
                 }

@@ -53,14 +53,28 @@ struct ItemView: View {
 
         .onTapGesture {
             self.showCart = true
+            let currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1)
 
-            withAnimation{
-                self.cart.items.insert(CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1), at: 0) //adds to Cart
 
-                self.cart.prices.insert(item.price, at: 0) //to store prices of the items added to cart; to get the total price
-                print(cart.prices)
-                self.cart.totalPrice = cart.prices.reduce(0, +) //adds the prices from prices array and store it to the cart object
+            if cart.items.contains(where: { $0.name == currentItem.name }) {
+
+
+                cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
+
+                print(cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity)
+
+
+            } else {
+
+                withAnimation {
+
+                    self.cart.items.insert(currentItem, at: 0) //adds to Cart
+//                    self.cart.prices.insert(item.price, at: 0)
+
+                }
+
             }
+
 
             animationAmount += 0.3
 

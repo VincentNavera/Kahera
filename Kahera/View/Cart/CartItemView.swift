@@ -8,17 +8,8 @@ struct CartItemView: View {
     let cartItemQuantity: Int
     let cartItemID: UUID
     let cartItemIndex: Int
-    @State private var oldValue = 0
-    @State private var newValue = 0
 
-    @State var changeInQuantity: Int {
-        didSet {
-            newValue = changeInQuantity
-        }
-        willSet{
-            oldValue = changeInQuantity
-        }
-    }
+    @State var changeInQuantity: Int
 
     @State private var quantityStepper = 0
     var body: some View {
@@ -44,10 +35,8 @@ struct CartItemView: View {
 
             VStack(alignment: .trailing, spacing: 0) {
 
-                Stepper(value: $quantityStepper.onChange(changeInTotalPrice)) {
 
-                }
-
+                Stepper("", onIncrement: incrementStep, onDecrement: decrementStep)
                 .scaleEffect(0.7)
                 .offset(x: 45, y: -3)
                 .disabled(changeInQuantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
@@ -58,10 +47,14 @@ struct CartItemView: View {
                     .largeTitleFont()
 
                     .padding(.trailing, 10)
-                Text("Quantity: x\(changeInQuantity)")
+
+                if cart.items.contains(where: { $0.name == cartItemName }) {
+
+                    Text("Quantity: x\(cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity)")
                     .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
                     .detailFont()
                     .padding(.trailing, 10)
+                }
                 Spacer()
 
 
@@ -71,28 +64,26 @@ struct CartItemView: View {
         .offset(x: 0)
 
     }
-    func changeInTotalPrice(_ value: Int) {
-        changeInQuantity = cartItemQuantity + quantityStepper //changeInQuantity for display since current cart item can be deleted and will cause out of range index if it was
-        if newValue > oldValue {
-            self.cart.totalPrice += cartItemPrice
-            cart.items[cartItemIndex].quantity += 1
-        }
-        else if newValue < oldValue {
-            self.cart.totalPrice -= cartItemPrice
-            cart.items[cartItemIndex].quantity -= 1
-        }
-        print(oldValue, newValue)
+    func incrementStep() {
+        quantityStepper += 1
+
+        cart.items[cartItemIndex].quantity += 1
+
+    }
+    func decrementStep() {
+        quantityStepper -= 1
+
+        cart.items[cartItemIndex].quantity -= 1
+
         withAnimation {
-            if changeInQuantity == 0 {
+            if cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 {
                 cart.items.removeAll {$0.id == cartItemID} //removes the item from the cart when qty reaches zero using item id
-                cart.prices.remove(at: cartItemIndex) //removes item from cart prices array using cart item index
-                print(cart.prices)
+
             }
         }
 
-
-
     }
+
 }
 
 struct CartItemView_Previews: PreviewProvider {

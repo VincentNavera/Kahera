@@ -9,9 +9,17 @@ import Foundation
 
 class CartItems: ObservableObject {
     @Published var items = [CartItemModel]()
-    @Published var totalPrice = 0.00
+    var totalPrice: Double {
+        var array = [Double]()
+        for item in items {
 
-    @Published var prices = [Double]()
+            array += [item.price * Double(item.quantity)]
+
+
+        }
+        return array.reduce(0, +)
+    }
+
 
 
 
