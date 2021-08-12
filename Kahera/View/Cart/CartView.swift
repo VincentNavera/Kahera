@@ -14,7 +14,9 @@ struct CartView: View {
             CartHeaderView(cart: cart)
             CartContentView(cart: cart)
             Spacer()
+            if cart.items != [] {
             CheckOutView(cart: cart)
+            }
         }
         .background(Color(#colorLiteral(red: 0.9490603805, green: 0.9489895701, blue: 0.9697913527, alpha: 1)))
         .frame(width: 417)
