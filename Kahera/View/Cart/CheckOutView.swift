@@ -41,7 +41,7 @@ struct CheckOutView: View {
             }
 
         }
-        .disabled(cart.items == [] ? true : false)
+        .disabled(cart.items == [] && cart.discountedItems == [] ? true : false)
         .alert(isPresented: $showAlert, content: { Alert(title: Text("Confirm Purchase"), primaryButton: .default(Text("Confirm")) {emptyCart()}, secondaryButton: .cancel() {
 
         })

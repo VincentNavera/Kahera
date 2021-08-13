@@ -145,7 +145,7 @@ struct CartContentView: View {
 
 
                 }
-                .foregroundColor(cart.cash != "" ? .black : .red)
+                .foregroundColor(cart.change > 0  ? Color(hex: "414243") : .red.opacity(0.8))
                 HStack {
 
                     Text("Change:")
@@ -156,7 +156,7 @@ struct CartContentView: View {
 
 
                 }
-                .foregroundColor(cart.cash != "" ? .black : .red)
+                .foregroundColor(cart.change > 0 ? Color(hex: "414243") : .red.opacity(0.8))
 
 
             }

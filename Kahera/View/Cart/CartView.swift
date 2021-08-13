@@ -14,7 +14,7 @@ struct CartView: View {
             CartHeaderView(cart: cart)
             CartContentView(cart: cart)
             Spacer()
-            if cart.discountedItems != [] {
+            if cart.discountedItems != [] || cart.items != [] {
             CheckOutView(cart: cart)
             }
         }
