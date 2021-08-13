@@ -41,19 +41,18 @@ struct HeaderView: View {
                     }
                     HStack {
                         Spacer()
-                        Button(action:{self.showAddItem = true}) {
+
+                        Button(action:{self.showAddItem = true}, label: {
                             Image(systemName: "plus")
                                 .font(Font.system(size: 24, weight: .regular))
 
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                        })
                         .padding(.trailing, 15)
 
-                        Button(action: { }) {
+                        Button(action: { }, label: {
                             Image(systemName: "line.horizontal.3.decrease.circle")
                                 .font(Font.system(size: 24, weight: .regular))
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                        })
                         .padding(.trailing, 15)
                     }
 

@@ -19,21 +19,24 @@ struct CartHeaderView: View {
             }
             .titleFont()
             Spacer()
-            Image(systemName: "trash")
-                .font(Font.system(size: 24, weight: .regular))
-                .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
-                .onTapGesture {
-                    withAnimation {
-                        cart.items = []
-                        cart.discountedItems = []
+            Button(action: emptyCart, label: {
+                Image(systemName: "trash")
+                    .font(Font.system(size: 24, weight: .regular))
+                    .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
+                  })
 
-                    }
-
-                }
         }
         .padding(.init(top: 50, leading: 0, bottom: 0, trailing: 20))
         .frame(height: 60)
 
+
+    }
+    func emptyCart() {
+        withAnimation {
+            cart.items = []
+            cart.discountedItems = []
+
+        }
 
     }
 }

@@ -24,12 +24,11 @@ struct ContentView: View {
             }
             HStack {
                 VStack {
-                    Image(systemName: "sidebar.left")
-                        .font(Font.system(size: 24, weight: .regular))
-                        .onTapGesture {
-                            withAnimation(.spring()){
-                                showCart.toggle()}
-                        }
+                    Button(action: sideBarIsPressed, label: {
+                        Image(systemName: "sidebar.left")
+                            .font(Font.system(size: 24, weight: .regular))
+                          })
+
 
                     Spacer()
                 }
@@ -42,6 +41,10 @@ struct ContentView: View {
 
         .ignoresSafeArea()
         .onAppear{self.showCart = true}
+    }
+    func sideBarIsPressed() {
+        withAnimation(.spring()){
+            showCart.toggle()}
     }
 }
 
