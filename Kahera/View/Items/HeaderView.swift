@@ -18,13 +18,19 @@ struct HeaderView: View {
                 if !edit {
                     HStack {
                     if showCart {
-                        Toggle("w/ Discount", isOn: $cart.showDiscount)
+                        Text("Discount")
+                            .detailFont()
                             .padding(.leading, 15)
+                        Toggle("With discount", isOn: $cart.showDiscount)
+                            .toggleStyle(SwitchToggleStyle(tint: Color(hex: "8fbd71")))
                             .labelsHidden()
+                            .padding(.trailing, 170)
 
 
                     }
+                        if !showCart {
                         Spacer()
+                        }
                         
                         Text(title)
                             .titleFont()

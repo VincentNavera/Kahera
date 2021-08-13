@@ -26,7 +26,7 @@ struct TabItemsView: View {
 
 
         }
-        .accentColor(Color(hex: "414243"))
+        .accentColor(Color(hex: "5e694f"))
     }
 }
 
