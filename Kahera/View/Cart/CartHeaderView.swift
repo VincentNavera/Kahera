@@ -12,8 +12,12 @@ struct CartHeaderView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text("Cart(\(cart.items.count))")
-                .titleFont()
+            HStack {
+                Image(systemName: cart.items.count == 0 && cart.discountedItems.count == 0 ? "cart" : "cart.fill")
+                Text("Cart(\(cart.items.count + cart.discountedItems.count))")
+
+            }
+            .titleFont()
             Spacer()
             Image(systemName: "trash")
                 .font(Font.system(size: 24, weight: .regular))
