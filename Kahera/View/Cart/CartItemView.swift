@@ -31,9 +31,10 @@ struct CartItemView: View {
             VStack(alignment: .trailing, spacing: 0) {
 
 
-                Stepper("", onIncrement: incrementStep, onDecrement: decrementStep)
+                Stepper("Change the number of item quantity", onIncrement: incrementStep, onDecrement: decrementStep)
                 .scaleEffect(0.7)
-                .offset(x: 45, y: -3)
+                .offset(x: 23, y: -3)
+                .labelsHidden()
                 .disabled(cart.items.contains(where: { $0.name == cartItemName }) && cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
 
 

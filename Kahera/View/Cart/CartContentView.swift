@@ -72,11 +72,12 @@ struct CartContentView: View {
                     Text("Tax (\(cart.taxPercentage)%):")
                         .foregroundColor(.gray)
                         .detailFont()
-                    Stepper(value: $cart.taxPercentage, in: 1...9999999) {
+                    Stepper("Change the tax percentage", value: $cart.taxPercentage, in: 1...9999999) {_ in
 
                     }
                     .scaleEffect(0.5)
-                    .offset(x: -95, y: 0)
+                    .labelsHidden()
+
 
                     Spacer()
                     Text("₱\(cart.tax, specifier: "%.2f")")
@@ -109,15 +110,14 @@ struct CartContentView: View {
                 }
                 HStack {
 
-                    Text("SC/PWD Discount (\(cart.discountPercentage)%): ")
+                    Text("Discount (\(cart.discountPercentage)%): ")
                         .foregroundColor(.gray)
                         .detailFont()
-                    Stepper(value: $cart.discountPercentage, in: 1...9999999) {
+                    Stepper("Change the percentage of discount", value: $cart.discountPercentage, in: 1...9999999) {_ in
 
                     }
                     .scaleEffect(0.5)
-                    .offset(x: -70, y: 0)
-
+                    .labelsHidden()
 
                     Spacer()
                     Text("₱0.00")
