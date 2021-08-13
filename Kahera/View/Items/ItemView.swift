@@ -53,7 +53,7 @@ struct ItemView: View {
 
         .onTapGesture {
             self.showCart = true
-            var currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1, discounted: false)
+            var currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1, discounted: false, barcode: item.barcode ?? "000000")
 
             if cart.showDiscount {
                 currentItem.discounted = true

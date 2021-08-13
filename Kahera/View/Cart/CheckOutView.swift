@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CheckOutView: View {
+    @Environment(\.managedObjectContext) var moc
     @ObservedObject var cart: CartItems
     @State private var animationAmount: CGFloat = 1
     @State private var showAlert = false
@@ -42,7 +43,11 @@ struct CheckOutView: View {
 
         }
         .disabled(cart.items == [] && cart.discountedItems == [] ? true : false)
-        .alert(isPresented: $showAlert, content: { Alert(title: Text("Confirm Purchase"), primaryButton: .default(Text("Confirm")) {emptyCart()}, secondaryButton: .cancel() {
+        .alert(isPresented: $showAlert, content: { Alert(title: Text("Confirm Purchase"), primaryButton: .default(Text("Confirm")) {
+
+            checkOutItems()
+            emptyCart()
+        }, secondaryButton: .cancel() {
 
         })
 
@@ -51,12 +56,59 @@ struct CheckOutView: View {
     }
 
     func checkOutItems() {
-    
+        let checkOutItems = CheckOutItems(context: self.moc)
+        for item in cart.items {
+            checkOutItems.name = item.name
+            checkOutItems.barcode = item.barcode
+            checkOutItems.price = item.price
+            checkOutItems.quantity = Int16(item.quantity)
+            checkOutItems.isDiscounted = item.discounted
+
+            checkOutItems.transaction = Sales(context: self.moc)
+            checkOutItems.transaction?.date = Date()
+            checkOutItems.transaction?.total = cart.totalPrice
+            checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
+            checkOutItems.transaction?.tax = String(cart.tax)
+            checkOutItems.transaction?.cash = String(cart.cash)
+            checkOutItems.transaction?.change = String(cart.change)
+            checkOutItems.transaction?.discount = String(cart.discount)
+            checkOutItems.transaction?.taxExempt = String(cart.taxExempt)
+            checkOutItems.transaction?.customerName = cart.customerName
+            checkOutItems.transaction?.taxableSales = String(cart.taxExemptSales)
+            checkOutItems.transaction?.deliveryFee = cart.deliveryFee
+
+
+        }
+        for item in cart.discountedItems {
+            checkOutItems.name = item.name
+            checkOutItems.barcode = item.barcode
+            checkOutItems.price = item.price
+            checkOutItems.quantity = Int16(item.quantity)
+            checkOutItems.isDiscounted = item.discounted
+
+            checkOutItems.transaction = Sales(context: self.moc)
+            checkOutItems.transaction?.date = Date()
+            checkOutItems.transaction?.total = cart.totalPrice
+            checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
+            checkOutItems.transaction?.tax = String(cart.tax)
+            checkOutItems.transaction?.cash = String(cart.cash)
+            checkOutItems.transaction?.change = String(cart.change)
+            checkOutItems.transaction?.discount = String(cart.discount)
+            checkOutItems.transaction?.taxExempt = String(cart.taxExempt)
+            checkOutItems.transaction?.customerName = cart.customerName
+            checkOutItems.transaction?.taxableSales = String(cart.taxExemptSales)
+            checkOutItems.transaction?.deliveryFee = cart.deliveryFee
+        }
+
+        try? self.moc.save()
+        print("saving...")
     }
 
     func emptyCart() {
         withAnimation {
             cart.items = []
+            cart.discountedItems = []
+            cart.customerName = "Customer Name"
            
         }
     }

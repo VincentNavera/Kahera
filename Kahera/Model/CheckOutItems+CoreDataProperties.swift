@@ -21,6 +21,7 @@ extension CheckOutItems {
     @NSManaged public var price: Double
     @NSManaged public var barcode: String?
     @NSManaged public var transaction: Sales?
+    @NSManaged public var isDiscounted: Bool
 
     public var wrappedName: String {
         name ?? "No Item Name"

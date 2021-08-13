@@ -15,6 +15,7 @@ struct CartItemModel: Identifiable, Equatable {
     let price: Double
     var quantity: Int
     var discounted: Bool
+    let barcode: String
     
 
 }

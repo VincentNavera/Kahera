@@ -35,6 +35,7 @@ struct CartHeaderView: View {
         withAnimation {
             cart.items = []
             cart.discountedItems = []
+            cart.customerName = "Customer Name"
 
         }
 

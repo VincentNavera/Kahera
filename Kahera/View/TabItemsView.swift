@@ -19,8 +19,8 @@ struct TabItemsView: View {
             }
             .animation(.default)
 
-          Text("Records Here")
-            .tabItem {
+          SalesView()
+                .tabItem {
               Label("Sales", systemImage: "")
             }
 
