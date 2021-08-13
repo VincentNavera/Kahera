@@ -18,8 +18,9 @@ struct ContentView: View {
                         .transition(.move(edge: .leading))
                 }
 
-                ItemsView(cart: cart, showCart: $showCart)
-                    .animation(.easeIn(duration: 0.3))
+                TabItemsView(cart: cart, showCart: $showCart)
+                    .animation(.default)
+                    
             }
             HStack {
                 VStack {
@@ -41,6 +42,7 @@ struct ContentView: View {
         .preferredColorScheme(.light)
 
         .ignoresSafeArea()
+        .onAppear{self.showCart = true}
     }
 }
 
