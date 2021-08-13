@@ -35,8 +35,7 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-            .padding()
-            .padding()
+            .padding(.init(top: 43.4, leading: 20, bottom: 0, trailing: 0))
         }
         .foregroundColor(Color(hex: "414243"))
         .preferredColorScheme(.light)

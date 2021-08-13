@@ -15,7 +15,7 @@ struct ItemsView: View {
             HeaderView(showCart: $showCart, cart: cart)
             ItemsContentView(cart: cart, showCart: $showCart)
         }
-        .background(Color(hex: "F8FAFB"))
+
     }
 }
 

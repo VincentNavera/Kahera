@@ -64,9 +64,8 @@ struct HeaderView: View {
             }
 
             .frame(height: 60)
-            .offset(x: -1)
+
             .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
-            .padding()
             .sheet(isPresented: $showAddItem, content: {
                 AddItemView()
             })
