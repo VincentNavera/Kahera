@@ -29,11 +29,18 @@ struct CartContentView: View {
             }
 
             Section {
-                    ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
-                        CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name)
+                ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
+                    CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: false)
                         
-                    }
-                    .onDelete(perform: deleteItems)
+                }
+                .onDelete(perform: deleteItems)
+
+                ForEach(cart.discountedItems, id: \.id) {item in //requires to use id to dynamically display the data
+                    CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: true)
+
+                }
+                .onDelete(perform: deleteDiscountedItems)
+                
                 
             }
             
@@ -92,7 +99,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱0.00")
+                    Text("₱\(cart.taxExemptSales, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
 
@@ -104,7 +111,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱0.00")
+                    Text("₱\(cart.taxExempt, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
@@ -120,7 +127,7 @@ struct CartContentView: View {
                     .labelsHidden()
 
                     Spacer()
-                    Text("₱0.00")
+                    Text("₱\(cart.discount, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
@@ -136,7 +143,9 @@ struct CartContentView: View {
                         .textFieldStyle(.roundedBorder)
 
 
+
                 }
+                .foregroundColor(cart.cash != "" ? .black : .red)
                 HStack {
 
                     Text("Change:")
@@ -147,6 +156,7 @@ struct CartContentView: View {
 
 
                 }
+                .foregroundColor(cart.cash != "" ? .black : .red)
 
 
             }
@@ -155,6 +165,11 @@ struct CartContentView: View {
     }
     func deleteItems(at offsets: IndexSet) {
         cart.items.remove(atOffsets: offsets) //deletes swiped item from cart.items array
+
+
+    }
+    func deleteDiscountedItems(at offsets: IndexSet) {
+        cart.discountedItems.remove(atOffsets: offsets) //deletes swiped item from cart.discountedItems array
 
 
     }

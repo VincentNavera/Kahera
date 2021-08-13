@@ -12,7 +12,7 @@ struct ItemsView: View {
     @Binding var showCart: Bool
     var body: some View {
         VStack {
-            HeaderView()
+            HeaderView(showCart: $showCart, cart: cart)
             ItemsContentView(cart: cart, showCart: $showCart)
         }
         .background(Color(hex: "F8FAFB"))

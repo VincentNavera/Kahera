@@ -11,14 +11,28 @@ struct HeaderView: View {
     @State private var edit = false
     @State private var title = "STORE NAME"
     @State private var showAddItem = false
+    @Binding var showCart: Bool
+    @ObservedObject var cart: CartItems
     var body: some View {
             ZStack {
                 if !edit {
-                    Text(title)
-                        .titleFont()
-                        .onTapGesture {
-                            self.edit = true
-                        }
+                    HStack {
+                    if showCart {
+                        Toggle("w/ Discount", isOn: $cart.showDiscount)
+                            .padding(.leading, 15)
+                            .labelsHidden()
+
+
+                    }
+                        Spacer()
+                        
+                        Text(title)
+                            .titleFont()
+                            .onTapGesture {
+                                self.edit = true
+                            }
+                        Spacer()
+                    }
                     HStack {
                         Spacer()
                         Button(action:{self.showAddItem = true}) {
@@ -62,6 +76,6 @@ struct HeaderView: View {
 }
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView()
+        HeaderView(showCart: .constant(false), cart: CartItems())
     }
 }

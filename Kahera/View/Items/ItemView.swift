@@ -53,28 +53,50 @@ struct ItemView: View {
 
         .onTapGesture {
             self.showCart = true
-            let currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1)
+            var currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1, discounted: false)
+
+            if cart.showDiscount {
+                currentItem.discounted = true
+                if cart.discountedItems.contains(where: { $0.name == currentItem.name }) {
 
 
-            if cart.items.contains(where: { $0.name == currentItem.name }) {
+                    cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
+
+                    print(cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == currentItem.name})!].quantity)
 
 
-                cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
+                } else {
 
-                print(cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity)
+                    withAnimation {
 
+                        self.cart.discountedItems.insert(currentItem, at: 0) //adds to Cart
 
-            } else {
-
-                withAnimation {
-
-                    self.cart.items.insert(currentItem, at: 0) //adds to Cart
-//                    self.cart.prices.insert(item.price, at: 0)
+                    }
 
                 }
 
+            } else {
+                if cart.items.contains(where: { $0.name == currentItem.name }) {
+
+
+                    cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
+
+                    print(cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity)
+
+
+                } else {
+
+                    withAnimation {
+
+                        self.cart.items.insert(currentItem, at: 0) //adds to Cart
+
+                    }
+
+                }
             }
 
+            print(cart.items)
+            print(cart.discountedItems)
 
             animationAmount += 0.3
 

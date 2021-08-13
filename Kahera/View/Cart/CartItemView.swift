@@ -6,6 +6,7 @@ struct CartItemView: View {
     let cartItemPrice: Double
     let cartItemName: String
     @State private var animationAmount: CGFloat = 1
+    let discounted: Bool
 
     var body: some View {
         HStack {
@@ -35,7 +36,7 @@ struct CartItemView: View {
                 .scaleEffect(0.7)
                 .offset(x: 23, y: -3)
                 .labelsHidden()
-                .disabled(cart.items.contains(where: { $0.name == cartItemName }) && cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
+                .disabled(cart.discountedItems.contains(where: { $0.name == cartItemName }) && cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 ? true : false) //disables the stepper when reaches zero to avoid multiple increment or decrement when gets clicked too fast
 
 
 
@@ -43,15 +44,28 @@ struct CartItemView: View {
                     .largeTitleFont()
 
                     .padding(.trailing, 10)
+                if discounted {
+                    if cart.discountedItems.contains(where: { $0.name == cartItemName }) {
 
-                if cart.items.contains(where: { $0.name == cartItemName }) {
+                        Text("Quantity: x\(cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == cartItemName})!].quantity)")
+                        .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
+                        .detailFont()
+                        .padding(.trailing, 10)
+                        .scaleEffect(animationAmount)
+                        .animation(.default)
+                    }
 
-                    Text("Quantity: x\(cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity)")
-                    .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
-                    .detailFont()
-                    .padding(.trailing, 10)
-                    .scaleEffect(animationAmount)
-                    .animation(.default)
+                } else {
+
+                    if cart.items.contains(where: { $0.name == cartItemName }) {
+
+                        Text("Quantity: x\(cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity)")
+                        .foregroundColor(Color(#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)))
+                        .detailFont()
+                        .padding(.trailing, 10)
+                        .scaleEffect(animationAmount)
+                        .animation(.default)
+                    }
                 }
                 Spacer()
 
@@ -64,8 +78,11 @@ struct CartItemView: View {
 
     }
     func incrementStep() {
-
-        cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity += 1
+        if discounted {
+            cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == cartItemName})!].quantity += 1
+        } else {
+            cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity += 1
+        }
         animationAmount += 0.3
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.animationAmount = 1
@@ -74,18 +91,33 @@ struct CartItemView: View {
     }
     func decrementStep() {
 
-        cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity -= 1
+        if discounted {
+            cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == cartItemName})!].quantity -= 1
+            withAnimation {
+                if cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 {
+                    cart.discountedItems.removeAll {$0.name == cartItemName} //removes the item from the cart when qty reaches zero using item name
+
+                }
+            }
+        } else {
+            cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity -= 1
+            withAnimation {
+                if cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 {
+                    cart.items.removeAll {$0.name == cartItemName} //removes the item from the cart when qty reaches zero using item name
+
+                }
+            }
+        }
+
+
+
+
         animationAmount += 0.3
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.animationAmount = 1
         }
 
-        withAnimation {
-            if cart.items[cart.items.firstIndex(where: {$0.name == cartItemName})!].quantity == 0 {
-                cart.items.removeAll {$0.name == cartItemName} //removes the item from the cart when qty reaches zero using item name
 
-            }
-        }
 
     }
 
@@ -93,7 +125,7 @@ struct CartItemView: View {
 
 struct CartItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name")
+        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", discounted: false)
             .previewLayout(.fixed(width: 475, height: 100))
     }
 }
