@@ -37,7 +37,7 @@ class CartItems: ObservableObject {
     }
 
     var totalPrice: Double { //Grand total
-        return self.totalPriceOfItemsWithNoDiscount + self.totalDiscountedPriceAfterDiscount
+        return (self.totalPriceOfItemsWithNoDiscount + self.totalDiscountedPriceAfterDiscount) + (Double(self.deliveryFee) ?? 0.00)
 
     }
 
