@@ -105,7 +105,7 @@ struct ItemView: View {
 
             }])
         }.sheet(isPresented: $showEditItem, content: {
-            EditItemView(inventory: item)
+            EditItemView(item: item)
         })
 
     }

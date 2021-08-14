@@ -62,6 +62,7 @@ struct HeaderView: View {
                         Button("Done"){
                             self.edit = false
                         }
+                        .padding(.trailing, 15)
                     }
                     .padding(.leading, 70)
 
