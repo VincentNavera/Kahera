@@ -36,7 +36,21 @@ struct CartContentView: View {
                 .onDelete(perform: deleteItems)
 
                 ForEach(cart.discountedItems, id: \.id) {item in //requires to use id to dynamically display the data
+                    ZStack {
                     CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: true)
+                        VStack {
+
+                            Text("less tax & discount".uppercased())
+                                .titleFont()   .foregroundColor(Color.red.opacity(0.3))
+//                            .padding(.init(top: 0, leading: 5, bottom: 0, trailing: 5))
+//                            .background(Color.red)
+//                            .clipShape(RoundedRectangle(cornerRadius: 5))
+
+                            
+
+
+                        }
+                    }
 
                 }
                 .onDelete(perform: deleteDiscountedItems)
