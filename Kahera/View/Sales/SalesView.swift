@@ -10,10 +10,26 @@ import SwiftUI
 struct SalesView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Sales.entity(), sortDescriptors: []) var sales: FetchedResults<Sales>
+    @State var selection = ""
     var body: some View {
-        ForEach(sales, id: \.date) { item in
-            VStack {
-                Text(item.wrappedCustomerName)
+        VStack {
+            Text("Records")
+                .titleFont()
+            
+            List {
+                Text("YEAR")
+                ForEach(0..<5) { transaction in
+                    Section(header: Text("Month")) {
+                        ForEach(0..<5) { _ in
+                            Text("Date")
+
+                        }
+
+                    }
+
+                }
+            .listStyle(GroupedListStyle())
+
             }
         }
 
