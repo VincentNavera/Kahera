@@ -57,11 +57,6 @@ struct CheckOutView: View {
 
     func checkOutItems() {
 
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .full
-        let date = formatter.string(from: now)
         var allItems = [CartItemModel]()
 
         for item in cart.items {
@@ -82,7 +77,7 @@ struct CheckOutView: View {
             checkOutItems.isDiscounted = item.discounted
 
             checkOutItems.transaction = Sales(context: self.moc)
-            checkOutItems.transaction?.date = date
+            checkOutItems.transaction?.date = Date()
             checkOutItems.transaction?.total = cart.totalPrice
             checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
             checkOutItems.transaction?.tax = String(cart.tax)

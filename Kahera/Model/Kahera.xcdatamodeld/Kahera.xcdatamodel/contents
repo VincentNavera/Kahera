@@ -31,7 +31,7 @@
         <attribute name="cash" optional="YES" attributeType="String"/>
         <attribute name="change" optional="YES" attributeType="String"/>
         <attribute name="customerName" optional="YES" attributeType="String"/>
-        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="deliveryFee" optional="YES" attributeType="String"/>
         <attribute name="discount" optional="YES" attributeType="String"/>
         <attribute name="tax" optional="YES" attributeType="String"/>
