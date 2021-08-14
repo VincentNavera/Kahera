@@ -10,6 +10,7 @@ import SwiftUI
 struct TabItemsView: View {
     @ObservedObject var cart: CartItems
     @Binding var showCart: Bool
+    @Binding var showSideBarIcon: Bool
     var body: some View {
 
         TabView {
@@ -19,7 +20,15 @@ struct TabItemsView: View {
             }
             .animation(.default)
 
-          SalesView()
+            SalesView(showCart: $showCart)
+                .onAppear{
+                    showCart = false
+                    showSideBarIcon = false
+
+                }
+                .onDisappear{
+                    showCart = true
+                    showSideBarIcon = true}
                 .tabItem {
               Label("Sales", systemImage: "")
             }
@@ -32,6 +41,6 @@ struct TabItemsView: View {
 
 struct TabItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        TabItemsView(cart: CartItems(), showCart: .constant(false))
+        TabItemsView(cart: CartItems(), showCart: .constant(false), showSideBarIcon: .constant(true))
     }
 }

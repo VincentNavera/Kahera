@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showCart = false
+    @State private var showSideBarIcon = true
     @ObservedObject var cart: CartItems //monitors the CartItems object for changes
     var body: some View {
         ZStack {
@@ -18,16 +19,18 @@ struct ContentView: View {
                         .transition(.move(edge: .leading))
                 }
 
-                TabItemsView(cart: cart, showCart: $showCart)
+                TabItemsView(cart: cart, showCart: $showCart, showSideBarIcon: $showSideBarIcon)
                     .animation(.default)
                     
             }
             HStack {
                 VStack {
+                    if showSideBarIcon {
                     Button(action: sideBarIsPressed, label: {
                         Image(systemName: "sidebar.left")
                             .font(Font.system(size: 24, weight: .regular))
                           })
+                    }
 
 
                     Spacer()

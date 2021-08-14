@@ -10,7 +10,7 @@ import SwiftUI
 struct SalesView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Sales.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sales.date, ascending: true),]) var sales: FetchedResults<Sales>
-    @State private var year = 0
+    @State private var year: Int = 0
     let currentYear = Calendar.current.component(.year, from: Date())
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -20,6 +20,7 @@ struct SalesView: View {
         dateFormatter.timeStyle = .medium
         return dateFormatter
     }
+    @Binding var showCart: Bool
 
     var body: some View {
         NavigationView {
@@ -31,13 +32,15 @@ struct SalesView: View {
                                 Text(String(item))
                             }
                     }
+                    .colorInvert()
+                    .colorMultiply(Color(hex: "8fbd71"))
                     .pickerStyle(MenuPickerStyle())
 
                     ForEach(months, id: \.self) { month in
                         Section(header: Text(month)) {
                             ForEach(sales, id: \.date) { transaction in
 
-                                if formatter.string(from: transaction.wrappedDate).contains(month) && Calendar.current.component(.year, from: transaction.wrappedDate) == currentYear {
+                                if formatter.string(from: transaction.wrappedDate).contains(month) && Calendar.current.component(.year, from: transaction.wrappedDate) == currentYear { //to be fixed
 
                                     NavigationLink(formatter.string(from: transaction.wrappedDate), destination: TransactionView(transaction: transaction))
                                         .onAppear{print(transaction.wrappedDate)}
@@ -64,6 +67,6 @@ struct SalesView: View {
 
 struct SalesView_Previews: PreviewProvider {
     static var previews: some View {
-        SalesView()
+        SalesView(showCart: .constant(false))
     }
 }
