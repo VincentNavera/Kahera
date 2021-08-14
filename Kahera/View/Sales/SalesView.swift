@@ -11,28 +11,35 @@ struct SalesView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Sales.entity(), sortDescriptors: []) var sales: FetchedResults<Sales>
     @State var selection = ""
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
     var body: some View {
-        VStack {
-            Text("Records")
-                .titleFont()
-            
-            List {
-                Text("YEAR")
-                ForEach(0..<5) { transaction in
-                    Section(header: Text("Month")) {
-                        ForEach(0..<5) { _ in
-                            Text("Date")
+        NavigationView {
+            VStack {
+                List {
+                    Text("2021")
+                    ForEach(months, id: \.self) { month in
+                        Section(header: Text(month)) {
+                            ForEach(sales, id: \.date) { transaction in
+
+                                if transaction.wrappedDate.contains(month) {
+                                    NavigationLink(transaction.wrappedDate, destination: TransactionView(transaction: transaction))
+                                        .onAppear{print("CHECKOUT\(transaction.itemsArray)")}
+
+                                }
+
+
+                            }
 
                         }
 
                     }
+                .listStyle(GroupedListStyle())
 
                 }
-            .listStyle(GroupedListStyle())
-
             }
-        }
 
+        }
     }
 }
 

@@ -16,7 +16,7 @@ extension Sales {
         return NSFetchRequest<Sales>(entityName: "Sales")
     }
 
-    @NSManaged public var date: Date?
+    @NSManaged public var date: String?
     @NSManaged public var total: Double
     @NSManaged public var taxableSales: String?
     @NSManaged public var tax: String?
@@ -29,8 +29,8 @@ extension Sales {
     @NSManaged public var deliveryFee: String?
     @NSManaged public var items: NSSet?
 
-    public var wrappedDate: Date {
-        date ?? Date()
+    public var wrappedDate: String {
+        date ?? "No Date (like you)"
     }
 
     public var wrappedtaxableSales: String {

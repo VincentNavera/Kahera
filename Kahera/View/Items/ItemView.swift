@@ -62,7 +62,6 @@ struct ItemView: View {
 
                     cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
 
-                    print(cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == currentItem.name})!].quantity)
 
 
                 } else {
@@ -81,7 +80,6 @@ struct ItemView: View {
 
                     cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
 
-                    print(cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity)
 
 
                 } else {

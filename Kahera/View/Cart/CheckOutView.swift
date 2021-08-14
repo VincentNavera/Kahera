@@ -56,30 +56,25 @@ struct CheckOutView: View {
     }
 
     func checkOutItems() {
-        let checkOutItems = CheckOutItems(context: self.moc)
+
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .full
+        let date = formatter.string(from: now)
+        var allItems = [CartItemModel]()
+
         for item in cart.items {
-            checkOutItems.name = item.name
-            checkOutItems.barcode = item.barcode
-            checkOutItems.price = item.price
-            checkOutItems.quantity = Int16(item.quantity)
-            checkOutItems.isDiscounted = item.discounted
-
-            checkOutItems.transaction = Sales(context: self.moc)
-            checkOutItems.transaction?.date = Date()
-            checkOutItems.transaction?.total = cart.totalPrice
-            checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
-            checkOutItems.transaction?.tax = String(cart.tax)
-            checkOutItems.transaction?.cash = String(cart.cash)
-            checkOutItems.transaction?.change = String(cart.change)
-            checkOutItems.transaction?.discount = String(cart.discount)
-            checkOutItems.transaction?.taxExempt = String(cart.taxExempt)
-            checkOutItems.transaction?.customerName = cart.customerName
-            checkOutItems.transaction?.taxableSales = String(cart.taxExemptSales)
-            checkOutItems.transaction?.deliveryFee = cart.deliveryFee
-
-
+            allItems.insert(item, at: 0)
         }
+
         for item in cart.discountedItems {
+            allItems.insert(item, at: 0)
+        }
+
+        let checkOutItems = CheckOutItems(context: self.moc)
+        for item in allItems {
+
             checkOutItems.name = item.name
             checkOutItems.barcode = item.barcode
             checkOutItems.price = item.price
@@ -87,7 +82,7 @@ struct CheckOutView: View {
             checkOutItems.isDiscounted = item.discounted
 
             checkOutItems.transaction = Sales(context: self.moc)
-            checkOutItems.transaction?.date = Date()
+            checkOutItems.transaction?.date = date
             checkOutItems.transaction?.total = cart.totalPrice
             checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
             checkOutItems.transaction?.tax = String(cart.tax)
@@ -98,7 +93,9 @@ struct CheckOutView: View {
             checkOutItems.transaction?.customerName = cart.customerName
             checkOutItems.transaction?.taxableSales = String(cart.taxExemptSales)
             checkOutItems.transaction?.deliveryFee = cart.deliveryFee
+
         }
+
 
         try? self.moc.save()
         print("saving...")
