@@ -47,11 +47,7 @@ struct CheckOutView: View {
 
             checkOutItems()
             emptyCart()
-        }, secondaryButton: .cancel() {
-
-        })
-
-        })
+        }, secondaryButton: .cancel() {})})
 
     }
 

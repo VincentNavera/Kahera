@@ -21,6 +21,7 @@ struct SalesView: View {
         return dateFormatter
     }
     @Binding var showCart: Bool
+    @State private var showAlert = false
 
     var body: some View {
         NavigationView {
@@ -32,7 +33,7 @@ struct SalesView: View {
                                 Text(String(item))
                             }
                     }
-                    .colorInvert()
+//                    .colorInvert()
                     .colorMultiply(Color(hex: "8fbd71"))
                     .pickerStyle(MenuPickerStyle())
 
@@ -60,7 +61,23 @@ struct SalesView: View {
                 }
             }
             .navigationBarTitle("Records")
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(action:{showAlert = true}, label: {
+                        Image(systemName: "trash")
+                    })
+                }
+            }
+            .alert(isPresented: $showAlert, content: { Alert(title: Text("Delete All Records?"), message: Text("Are you sure you want to permanently delete all transaction records?"), primaryButton: .destructive(Text("Confirm")) {
 
+                emptyRecords()
+            }, secondaryButton: .cancel() {})})
+        }
+    }
+    func emptyRecords() {
+        for allItems in sales {
+            moc.delete(allItems)
+            try? self.moc.save()
         }
     }
 }

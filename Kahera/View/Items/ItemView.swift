@@ -59,42 +59,26 @@ struct ItemView: View {
                 currentItem.discounted = true
                 if cart.discountedItems.contains(where: { $0.name == currentItem.name }) {
 
-
                     cart.discountedItems[cart.discountedItems.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
 
-
-
                 } else {
-
                     withAnimation {
-
                         self.cart.discountedItems.insert(currentItem, at: 0) //adds to Cart
-
                     }
-
                 }
-
             } else {
                 if cart.items.contains(where: { $0.name == currentItem.name }) {
 
 
                     cart.items[cart.items.firstIndex(where: {$0.name == currentItem.name})!].quantity += 1
 
-
-
                 } else {
-
                     withAnimation {
-
                         self.cart.items.insert(currentItem, at: 0) //adds to Cart
-
                     }
-
                 }
             }
 
-            print(cart.items)
-            print(cart.discountedItems)
 
             animationAmount += 0.3
 
