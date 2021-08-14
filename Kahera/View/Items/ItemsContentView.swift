@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemsContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Inventory.entity(), sortDescriptors: []) var inventory: FetchedResults<Inventory>
+    @FetchRequest(entity: Inventory.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Inventory.name, ascending: true),]) var inventory: FetchedResults<Inventory>
     @StateObject var cart = CartItems() //this creates and owns the CartItems object
     @Binding var showCart: Bool
     

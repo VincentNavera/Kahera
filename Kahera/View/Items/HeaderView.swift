@@ -49,11 +49,11 @@ struct HeaderView: View {
                         })
                         .padding(.trailing, 15)
 
-                        Button(action: { }, label: {
-                            Image(systemName: "line.horizontal.3.decrease.circle")
-                                .font(Font.system(size: 24, weight: .regular))
-                        })
-                        .padding(.trailing, 15)
+//                        Button(action: { }, label: {
+//                            Image(systemName: "line.horizontal.3.decrease.circle")
+//                                .font(Font.system(size: 24, weight: .regular))
+//                        })
+//                        .padding(.trailing, 15)
                     }
 
                 } else {
