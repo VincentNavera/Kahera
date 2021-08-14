@@ -17,38 +17,46 @@ struct EditItemView: View {
     @State private var qty = ""
     @State private var barcode = ""
     var body: some View {
-        Form {
-            Section(header: Text("Name")) {
-                TextField(item.name ?? "No Name", text: $itemName)
-            }
-            Section(header: Text("Item ID / Barcode")) {
-                TextField(item.barcode ?? "000000", text: $barcode)
-                    .keyboardType(.numberPad)
-            }
-            Section(header: Text("Price")) {
-                    TextField(String(item.price), text: $price)
-                    .keyboardType(.decimalPad)
-            }
-            Section(header: Text("Quantity")) {
-                TextField(item.quantity ?? "0", text: $qty)
+        ZStack {
+            List {
+                Section(header: Text("Name")) {
+                    TextField(item.name ?? "No Name", text: $itemName)
+                }
+                Section(header: Text("Item ID / Barcode")) {
+                    TextField(item.barcode ?? "000000", text: $barcode)
                         .keyboardType(.numberPad)
+                }
+                Section(header: Text("Price")) {
+                        TextField(String(item.price), text: $price)
+                        .keyboardType(.decimalPad)
+                }
+                Section(header: Text("Quantity")) {
+                    TextField(item.quantity ?? "0", text: $qty)
+                            .keyboardType(.numberPad)
+                }
+
             }
 
-        }
+
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button("Cancel") {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    Spacer()
+
+                    Button(action: saveItem, label: {
+                        Text("Save")
+                    })
+                        .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
+                    Spacer()
 
 
-        HStack {
-            Spacer()
-            Button(action: saveItem, label: {
-                Text("Save")
-            })
-                .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
-            Spacer()
-
-            Button("Cancel") {
-                self.presentationMode.wrappedValue.dismiss()
+                }
+                .padding(50)
             }
-            Spacer()
         }
         
     }

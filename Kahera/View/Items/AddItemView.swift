@@ -15,8 +15,8 @@ struct AddItemView: View {
     @State private var qty = ""
     @State private var barcode = ""
     var body: some View {
-        VStack {
-            Form {
+        ZStack {
+            List {
                 Section(header: Text("Item Name")) {
                     TextField("", text: $itemName)
                 }
@@ -34,18 +34,24 @@ struct AddItemView: View {
                 }
 
             }
-
-            HStack {
+            VStack {
                 Spacer()
-                Button(action: saveItem, label: {
-                    Text("Save")
-                })
-                Spacer()
+                HStack {
+                    Spacer()
+                    Button("Cancel") {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    Spacer()
+                    
+                    Button(action: saveItem, label: {
+                        Text("Save")
+                    })
+                        .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
+                    Spacer()
 
-                Button("Cancel") {
-                    self.presentationMode.wrappedValue.dismiss()
+
                 }
-                Spacer()
+                .padding(50)
             }
         }
     }

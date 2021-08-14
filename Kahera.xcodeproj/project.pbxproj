@@ -187,8 +187,8 @@
 				BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */,
 				BD1E2E0126B903C300D4DF82 /* HeaderView.swift */,
 				BD89E18D26BD3F75000413EE /* AddItemView.swift */,
-				BDF5EA2F26B90D34003CD754 /* ItemsView.swift */,
 				BDF5EA3126B90F89003CD754 /* EditItemView.swift */,
+				BDF5EA2F26B90D34003CD754 /* ItemsView.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
