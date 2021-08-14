@@ -10,7 +10,8 @@ import SwiftUI
 struct SalesView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Sales.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Sales.date, ascending: true),]) var sales: FetchedResults<Sales>
-    @State var selection = ""
+    @State private var year = 0
+    let currentYear = Calendar.current.component(.year, from: Date())
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     var formatter: DateFormatter {
@@ -24,14 +25,22 @@ struct SalesView: View {
         NavigationView {
             VStack {
                 List {
-                    Text("2021")
+
+                    Picker(String(year), selection: $year) {
+                            ForEach(2021 ..< currentYear + 1) { item in
+                                Text(String(item))
+                            }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+
                     ForEach(months, id: \.self) { month in
                         Section(header: Text(month)) {
                             ForEach(sales, id: \.date) { transaction in
 
-                                if formatter.string(from: transaction.wrappedDate).contains(month) {
+                                if formatter.string(from: transaction.wrappedDate).contains(month) && Calendar.current.component(.year, from: transaction.wrappedDate) == currentYear {
+
                                     NavigationLink(formatter.string(from: transaction.wrappedDate), destination: TransactionView(transaction: transaction))
-                                        .onAppear{print("CHECKOUT\(transaction.itemsArray)")}
+                                        .onAppear{print(transaction.wrappedDate)}
 
                                 }
 
@@ -47,6 +56,7 @@ struct SalesView: View {
 
                 }
             }
+            .navigationBarTitle("Records")
 
         }
     }

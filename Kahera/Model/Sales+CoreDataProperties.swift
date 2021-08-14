@@ -17,6 +17,7 @@ extension Sales {
     }
 
     @NSManaged public var date: Date?
+    @NSManaged public var formattedDate: String?
     @NSManaged public var total: Double
     @NSManaged public var taxableSales: String?
     @NSManaged public var tax: String?
@@ -31,6 +32,9 @@ extension Sales {
 
     public var wrappedDate: Date {
         date ?? Date()
+    }
+    public var wrappedFormattedDate: String {
+        formattedDate ?? "No Date (Like you)"
     }
 
     public var wrappedtaxableSales: String {

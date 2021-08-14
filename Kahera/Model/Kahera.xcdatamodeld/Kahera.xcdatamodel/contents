@@ -34,6 +34,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="deliveryFee" optional="YES" attributeType="String"/>
         <attribute name="discount" optional="YES" attributeType="String"/>
+        <attribute name="formattedDate" optional="YES" attributeType="String"/>
         <attribute name="tax" optional="YES" attributeType="String"/>
         <attribute name="taxableSales" optional="YES" attributeType="String"/>
         <attribute name="taxExempt" optional="YES" attributeType="String"/>
@@ -44,11 +45,14 @@
             <uniquenessConstraint>
                 <constraint value="date"/>
             </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="formattedDate"/>
+            </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <elements>
         <element name="CheckOutItems" positionX="-54" positionY="99" width="128" height="119"/>
         <element name="Inventory" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="Sales" positionX="-63" positionY="27" width="128" height="209"/>
+        <element name="Sales" positionX="-63" positionY="27" width="128" height="224"/>
     </elements>
 </model>

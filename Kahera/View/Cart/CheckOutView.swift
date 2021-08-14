@@ -56,6 +56,12 @@ struct CheckOutView: View {
     }
 
     func checkOutItems() {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .full
+        let formattedDate = dateFormatter.string(from: now)
+        //added a formatted date for merging, Date types wont merge apparently
 
         var allItems = [CartItemModel]()
 
@@ -78,6 +84,7 @@ struct CheckOutView: View {
 
             checkOutItems.transaction = Sales(context: self.moc)
             checkOutItems.transaction?.date = Date()
+            checkOutItems.transaction?.formattedDate = formattedDate
             checkOutItems.transaction?.total = cart.totalPrice
             checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
             checkOutItems.transaction?.tax = String(cart.tax)
