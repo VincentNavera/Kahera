@@ -35,6 +35,7 @@
 		BDCDAB8E26BBB90F00F48A00 /* CartTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */; };
 		BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */; };
 		BDCDAB9226BBBAFD00F48A00 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDAB9126BBBAFD00F48A00 /* CartView.swift */; };
+		BDF07FE626C8BDB600B459B2 /* CustomRedactedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF07FE526C8BDB600B459B2 /* CustomRedactedModifier.swift */; };
 		BDF5EA3026B90D34003CD754 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA2F26B90D34003CD754 /* ItemsView.swift */; };
 		BDF5EA3226B90F89003CD754 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5EA3126B90F89003CD754 /* EditItemView.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		BDCDAB8D26BBB90F00F48A00 /* CartTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalView.swift; sourceTree = "<group>"; };
 		BDCDAB8F26BBBA5100F48A00 /* CartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeaderView.swift; sourceTree = "<group>"; };
 		BDCDAB9126BBBAFD00F48A00 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		BDF07FE526C8BDB600B459B2 /* CustomRedactedModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRedactedModifier.swift; sourceTree = "<group>"; };
 		BDF5EA2F26B90D34003CD754 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 		BDF5EA3126B90F89003CD754 /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 		BD414A9126C2841E00648E4B /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				BDF07FE526C8BDB600B459B2 /* CustomRedactedModifier.swift */,
 				BD1E2DFD26B8F87F00D4DF82 /* CustomFontModifiers.swift */,
 				BD152C2F26C36240002465FD /* CustomColorInHex.swift */,
 			);
@@ -280,6 +283,7 @@
 				BDCDAB8C26BBA98500F48A00 /* CartContentView.swift in Sources */,
 				BD152C3826C3A31B002465FD /* CheckOutItems+CoreDataProperties.swift in Sources */,
 				BD152C3626C3A31B002465FD /* Sales+CoreDataProperties.swift in Sources */,
+				BDF07FE626C8BDB600B459B2 /* CustomRedactedModifier.swift in Sources */,
 				BDCDAB8A26BB8D6100F48A00 /* CartItemView.swift in Sources */,
 				BDCDAB9026BBBA5100F48A00 /* CartHeaderView.swift in Sources */,
 				BD1E2DE426B8E56A00D4DF82 /* AppDelegate.swift in Sources */,

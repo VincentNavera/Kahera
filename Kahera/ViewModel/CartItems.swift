@@ -50,7 +50,7 @@ class CartItems: ObservableObject {
     @Published var date = Date()
     @Published var total = 0.00
     @Published var cash = ""
-    @Published var customerName = "Customer Name"
+    @Published var customerName = ""
     @Published var deliveryFee = ""
 
     var taxableSales: Double { //total of items (not discounted) before tax

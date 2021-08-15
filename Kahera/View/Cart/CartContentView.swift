@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartContentView: View {
     @ObservedObject var cart: CartItems //monitors the CartItems object for changes
-    @State private var editName = false
+    @State private var editName = true
 
 
     var body: some View {
@@ -17,7 +17,7 @@ struct CartContentView: View {
             Section {
                 HStack {
                     if editName {
-                        TextField(cart.customerName, text: $cart.customerName, onCommit: {self.editName = false})
+                        TextField("Customer Name", text: $cart.customerName, onCommit: {self.editName = false})
                             .textFieldStyle(.roundedBorder)
                     } else {
                         Text(cart.customerName)
