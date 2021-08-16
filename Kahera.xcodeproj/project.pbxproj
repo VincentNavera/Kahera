@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		BD1E2E0026B8FEB000D4DF82 /* ItemsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */; };
 		BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2E0126B903C300D4DF82 /* HeaderView.swift */; };
 		BD21619026CA0E70002D574F /* CustomKeyboardModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21618F26CA0E70002D574F /* CustomKeyboardModifiers.swift */; };
+		BD21619926CA2F66002D574F /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BD21619826CA2F66002D574F /* SFSymbolsPicker */; };
 		BD3E5C1E26C756FC00183311 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3E5C1D26C756FC00183311 /* TransactionView.swift */; };
 		BD51C13E26C4A75600B6B47D /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD51C13D26C4A75600B6B47D /* CheckOutView.swift */; };
 		BD89E18E26BD3F75000413EE /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD89E18D26BD3F75000413EE /* AddItemView.swift */; };
@@ -84,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD21619926CA2F66002D574F /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +229,9 @@
 			dependencies = (
 			);
 			name = Kahera;
+			packageProductDependencies = (
+				BD21619826CA2F66002D574F /* SFSymbolsPicker */,
+			);
 			productName = Kahera;
 			productReference = BD1E2DE026B8E56A00D4DF82 /* Kahera.app */;
 			productType = "com.apple.product-type.application";
@@ -254,6 +259,9 @@
 				Base,
 			);
 			mainGroup = BD1E2DD726B8E56A00D4DF82;
+			packageReferences = (
+				BD21619726CA2F66002D574F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
+			);
 			productRefGroup = BD1E2DE126B8E56A00D4DF82 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -519,6 +527,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BD21619726CA2F66002D574F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BD21619826CA2F66002D574F /* SFSymbolsPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD21619726CA2F66002D574F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
+			productName = SFSymbolsPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BD1E2DE926B8E56A00D4DF82 /* Kahera.xcdatamodeld */ = {

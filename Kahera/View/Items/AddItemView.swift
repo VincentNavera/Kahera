@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSymbolsPicker
 
 struct AddItemView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -20,6 +21,8 @@ struct AddItemView: View {
     @State private var showPriceAlert = false
     @State private var showQuantityAlert = false
     @State private var errorMessage = ""
+    @Binding var image: String
+    @State private var showPicker = false
     var body: some View {
         ZStack {
             List {
@@ -33,11 +36,29 @@ struct AddItemView: View {
                         .keyboardType(.numberPad)
                         .alert(isPresented: $showBarcodeAlert, content: { Alert(title: Text("Barcode Already Exists!"), message: Text("Enter a valid barcode."), dismissButton: .cancel())})
                 }
+
                 Section(header: Text("Price")){
                     TextField("\(cart.selectedCurrency)0.00", text: $price)
                         .modifier(NumbersAndDecimalsOnlyViewModifier(text: $price))
                         .alert(isPresented: $showPriceAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid price."), dismissButton: .cancel())})
                         
+                }
+                Section(header: Text("Item Image")){
+                    Button(action: {
+                        withAnimation {
+                            showPicker.toggle()
+                        }
+                    }, label: {
+                                HStack {
+                                    Text("Select item image:")
+                                    Image(systemName: image)
+                                        .padding(.leading, 15)
+                                        .padding(.trailing, 15)
+                                    Text("will be availble soon!")
+                                        .foregroundColor(.gray.opacity(0.5))
+                                }
+                            })
+                        .disabled(true)
                 }
 
             }
@@ -86,6 +107,7 @@ struct AddItemView: View {
             item.barcode = barcode
             item.name = itemName
             item.price = Double(price) ?? 0.00
+            item.image = image
 
             do {
                 try self.moc.save() //saves to Inventory
@@ -105,6 +127,6 @@ struct AddItemView: View {
 
 struct addItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemView( cart: CartItems())
+        AddItemView( cart: CartItems(), image: .constant("photo.fill.on.rectangle.fill"))
     }
 }

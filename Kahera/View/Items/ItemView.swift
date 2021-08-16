@@ -19,7 +19,7 @@ struct ItemView: View {
     @State private var showActions = false
     @State private var showEditItem = false
     @Binding var showCart: Bool
-    let image = "photo.fill.on.rectangle.fill"
+    @State private var image = "photo.fill.on.rectangle.fill"
     
     var item: Inventory
 

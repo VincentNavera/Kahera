@@ -22,6 +22,8 @@ struct EditItemView: View {
     @State private var showPriceAlert = false
     @State private var showQuantityAlert = false
     @State private var errorMessage = ""
+    @State private var showPicker = false
+    @State private var image = "photo.fill.on.rectangle.fill"
     
     var body: some View {
         ZStack {
@@ -40,7 +42,23 @@ struct EditItemView: View {
                         .modifier(NumbersAndDecimalsOnlyViewModifier(text: $price))
                         .alert(isPresented: $showPriceAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid price."), dismissButton: .cancel())})
                 }
-
+                Section(header: Text("Item Image")){
+                    Button(action: {
+                        withAnimation {
+                            showPicker.toggle()
+                        }
+                    }, label: {
+                                HStack {
+                                    Text("Select item image:")
+                                    Image(systemName: item.image ?? "photo.fill.on.rectangle.fill")
+                                        .padding(.leading, 15)
+                                        .padding(.trailing, 15)
+                                    Text("will be availble soon!")
+                                        .foregroundColor(.gray.opacity(0.5))
+                                }
+                            })
+                        .disabled(true)
+                }
             }
 
 
@@ -91,6 +109,7 @@ struct EditItemView: View {
             item.barcode = barcode
             item.name = itemName
             item.price = Double(price) ?? 0.00
+            item.image = image
 
             do {
                 try self.moc.save() //saves to Inventory

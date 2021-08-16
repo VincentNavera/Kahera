@@ -93,7 +93,7 @@ struct HeaderView: View {
 
             .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
             .sheet(isPresented: $showAddItem, content: {
-                AddItemView(cart: cart)
+                AddItemView(cart: cart, image: .constant("photo.fill.on.rectangle.fill"))
             })
 
 
