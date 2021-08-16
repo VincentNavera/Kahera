@@ -17,24 +17,31 @@ struct EditItemView: View {
     @State private var qty = ""
     @State private var barcode = ""
     @ObservedObject var cart: CartItems
+    @State private var showNameAlert = false
+    @State private var showBarcodeAlert = false
+    @State private var showPriceAlert = false
+    @State private var showQuantityAlert = false
     
     var body: some View {
         ZStack {
             List {
                 Section(header: Text("Name")) {
                     TextField(item.name ?? "No Name", text: $itemName)
+                        .alert(isPresented: $showNameAlert, content: { Alert(title: Text("Name Already Exist!"), message: Text("Enter a valid name."), dismissButton: .cancel())})
                 }
                 Section(header: Text("Item ID / Barcode")) {
                     TextField(item.barcode ?? "000000", text: $barcode)
-                        .keyboardType(.numberPad)
+                        .alert(isPresented: $showBarcodeAlert, content: { Alert(title: Text("Barcode Already Exist!"), message: Text("Enter a valid barcode."), dismissButton: .cancel())})
                 }
                 Section(header: Text("Price")) {
                         TextField("\(cart.selectedCurrency)\(String(item.price))", text: $price)
                         .modifier(NumbersAndDecimalsOnlyViewModifier(text: $price))
+                        .alert(isPresented: $showPriceAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid price."), dismissButton: .cancel())})
                 }
                 Section(header: Text("Quantity")) {
                     TextField(item.quantity ?? "0", text: $qty)
                         .modifier(NumbersOnlyViewModifier(text: $qty))
+                        .alert(isPresented: $showQuantityAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid quantity."), dismissButton: .cancel())})
                 }
 
             }
