@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartContentView: View {
     @ObservedObject var cart: CartItems //monitors the CartItems object for changes
-    @State private var editName = true
+    @State private var editName = false
 
 
     var body: some View {
@@ -19,9 +19,17 @@ struct CartContentView: View {
                     if editName {
                         TextField("Customer Name", text: $cart.customerName, onCommit: {self.editName = false})
                             .textFieldStyle(.roundedBorder)
+                        Button("Done"){
+                            self.editName = false
+                        }
                     } else {
                         Text(cart.customerName)
                             .onTapGesture {self.editName = true}
+                        Button(action:{self.editName = true}, label: {
+                            Image(systemName: "pencil")
+                                .font(Font.system(size: 20, weight: .regular))
+                                .foregroundColor(.gray.opacity(0.5))
+                        })
 
                     }
                 }

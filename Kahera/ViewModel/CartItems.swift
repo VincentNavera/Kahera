@@ -57,7 +57,7 @@ class CartItems: ObservableObject {
     @Published var date = Date()
     @Published var total = 0.00
     @Published var cash = ""
-    @Published var customerName = ""
+    @Published var customerName = "Customer Name"
     @Published var deliveryFee = ""
 
 
