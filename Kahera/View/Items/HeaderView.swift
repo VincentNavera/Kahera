@@ -9,7 +9,10 @@ import SwiftUI
 
 struct HeaderView: View {
     @State private var edit = false
-    @State private var title = "STORE NAME"
+    @State private var title = ""
+    var name: String {
+        return UserDefaults.standard.string(forKey: "Title") ?? "Store Name"
+    }
     @State private var showAddItem = false
     @Binding var showCart: Bool
     @ObservedObject var cart: CartItems
@@ -32,11 +35,14 @@ struct HeaderView: View {
                         Spacer()
                         }
                         
-                        Text(title)
+                        Text(name)
                             .titleFont()
-                            .onTapGesture {
-                                self.edit = true
-                            }
+                        Button(action:{self.edit = true}, label: {
+                            Image(systemName: "pencil")
+                                .font(Font.system(size: 20, weight: .regular))
+                                .foregroundColor(.gray.opacity(0.5))
+                        })
+
                         Spacer()
                     }
                     HStack {
@@ -49,6 +55,19 @@ struct HeaderView: View {
                         })
                         .padding(.trailing, 15)
 
+                        Picker(cart.selectedCurrency, selection: $cart.selectedCurrency) {
+                            ForEach(cart.currencies, id: \.self) { currency in
+                                    Text(String(currency))
+
+                                
+                                }
+                        }
+    //                    .colorInvert()
+                        .colorMultiply(Color(hex: "414243"))
+                        .scaleEffect(1.5)
+                        .padding(.trailing, 15)
+                        .pickerStyle(MenuPickerStyle())
+
 //                        Button(action: { }, label: {
 //                            Image(systemName: "line.horizontal.3.decrease.circle")
 //                                .font(Font.system(size: 24, weight: .regular))
@@ -58,9 +77,10 @@ struct HeaderView: View {
 
                 } else {
                     HStack {
-                        TextField(title, text: $title, onCommit: {self.edit = false})
+                        TextField(name, text: $title, onCommit: {self.edit = false; saveStoreName()})
                         Button("Done"){
                             self.edit = false
+                            saveStoreName()
                         }
                         .padding(.trailing, 15)
                     }
@@ -73,11 +93,17 @@ struct HeaderView: View {
 
             .foregroundColor(Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)))
             .sheet(isPresented: $showAddItem, content: {
-                AddItemView()
+                AddItemView(cart: cart)
             })
 
 
     }
+    func saveStoreName() {
+        UserDefaults.standard.set(self.title, forKey: "Title")
+
+    }
+
+
 }
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {

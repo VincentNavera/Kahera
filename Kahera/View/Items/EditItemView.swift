@@ -16,6 +16,8 @@ struct EditItemView: View {
     @State private var price = ""
     @State private var qty = ""
     @State private var barcode = ""
+    @ObservedObject var cart: CartItems
+    
     var body: some View {
         ZStack {
             List {
@@ -27,7 +29,7 @@ struct EditItemView: View {
                         .keyboardType(.numberPad)
                 }
                 Section(header: Text("Price")) {
-                        TextField(String(item.price), text: $price)
+                        TextField("\(cart.selectedCurrency)\(String(item.price))", text: $price)
                         .modifier(NumbersAndDecimalsOnlyViewModifier(text: $price))
                 }
                 Section(header: Text("Quantity")) {
@@ -89,7 +91,7 @@ struct EditItemView_Previews: PreviewProvider {
             inventory.price = 0.00
 
             return NavigationView {
-                EditItemView(item: inventory)
+                EditItemView(item: inventory, cart: CartItems())
             }
         }
     }

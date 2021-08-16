@@ -44,6 +44,13 @@ class CartItems: ObservableObject {
 
 
 
+    @Published var currencies = ["$", "₱", "€"]
+    @Published var selectedCurrency = UserDefaults.standard.string(forKey: "Currency") ?? "$" {
+        didSet {
+            UserDefaults.standard.set(self.selectedCurrency, forKey: "Currency")
+        }
+    }
+
     @Published var taxPercentage = 12
     @Published var discountPercentage = 20
 
@@ -52,6 +59,8 @@ class CartItems: ObservableObject {
     @Published var cash = ""
     @Published var customerName = ""
     @Published var deliveryFee = ""
+
+
 
     var taxableSales: Double { //total of items (not discounted) before tax
         return self.totalPriceOfItemsWithNoDiscount - ((Double(self.taxPercentage) / 100.00) * self.totalPriceOfItemsWithNoDiscount)

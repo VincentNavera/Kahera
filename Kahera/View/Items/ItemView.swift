@@ -113,7 +113,7 @@ struct ItemView: View {
 
             }])
         }.sheet(isPresented: $showEditItem, content: {
-            EditItemView(item: item)
+            EditItemView(item: item, cart: cart)
         })
 
     }
