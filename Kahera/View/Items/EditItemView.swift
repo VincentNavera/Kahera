@@ -11,27 +11,28 @@ import CoreData
 struct EditItemView: View {
     @Environment(\.managedObjectContext) var moc // for saving later
     @Environment(\.presentationMode) var presentationMode
+    @FetchRequest(entity: Inventory.entity(), sortDescriptors: []) var inventory: FetchedResults<Inventory>
     var item: Inventory
     @State private var itemName = ""
     @State private var price = ""
     @State private var qty = ""
     @State private var barcode = ""
     @ObservedObject var cart: CartItems
-    @State private var showNameAlert = false
     @State private var showBarcodeAlert = false
     @State private var showPriceAlert = false
     @State private var showQuantityAlert = false
+    @State private var errorMessage = ""
     
     var body: some View {
         ZStack {
             List {
                 Section(header: Text("Name")) {
                     TextField(item.name ?? "No Name", text: $itemName)
-                        .alert(isPresented: $showNameAlert, content: { Alert(title: Text("Name Already Exist!"), message: Text("Enter a valid name."), dismissButton: .cancel())})
+
                 }
                 Section(header: Text("Item ID / Barcode")) {
                     TextField(item.barcode ?? "000000", text: $barcode)
-                        .alert(isPresented: $showBarcodeAlert, content: { Alert(title: Text("Barcode Already Exist!"), message: Text("Enter a valid barcode."), dismissButton: .cancel())})
+                        .alert(isPresented: $showBarcodeAlert, content: { Alert(title: Text("Barcode Already Exists!"), message: Text("Enter a valid barcode."), dismissButton: .cancel())})
                 }
                 Section(header: Text("Price")) {
                         TextField("\(cart.selectedCurrency)\(String(item.price))", text: $price)
@@ -61,6 +62,7 @@ struct EditItemView: View {
                     })
                         .foregroundColor(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? .gray.opacity(0.7) : Color(hex: "414243"))
                         .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
+                        .alert(isPresented: $showQuantityAlert, content: { Alert(title: Text("ERROR!"), message: Text(errorMessage), dismissButton: .cancel())})
                     Spacer()
 
 
@@ -71,20 +73,34 @@ struct EditItemView: View {
         
     }
     func saveItem() {
-        item.barcode = barcode
-        item.name = itemName
-        item.quantity = qty //qty type to be edited later
-        item.price = Double(price) ?? 0.00
 
-        do {
-            try self.moc.save() //saves to Inventory
-            print("saving...")
-            self.presentationMode.wrappedValue.dismiss()
-        } catch {
-            print(error.localizedDescription)
+        if Double(price) == nil {
+            self.showPriceAlert = true
+        }
+        else if Int(qty) == nil {
+            self.showQuantityAlert = true
+        }
+        else {
+            item.barcode = barcode
+            item.name = itemName
+            item.quantity = qty //qty type to be edited later
+            item.price = Double(price) ?? 0.00
+
+            do {
+                try self.moc.save() //saves to Inventory
+                print("saving...")
+                self.presentationMode.wrappedValue.dismiss()
+            } catch {
+                print(error.localizedDescription)
+                self.errorMessage = error.localizedDescription
+            }
+
         }
 
+
+
     }
+
 }
 
 struct EditItemView_Previews: PreviewProvider {

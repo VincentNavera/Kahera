@@ -12,6 +12,7 @@ struct ItemsContentView: View {
     @FetchRequest(entity: Inventory.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Inventory.name, ascending: true),]) var inventory: FetchedResults<Inventory>
     @StateObject var cart = CartItems() //this creates and owns the CartItems object
     @Binding var showCart: Bool
+    @State private var isLoading = true
     
     
 
@@ -23,6 +24,9 @@ struct ItemsContentView: View {
                     ZStack {
 
                         ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price, cart: cart, showCart: $showCart, item: item)
+                            .redacted(when: isLoading, redactionType: .customPlaceholder)
+                            .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 1) {isLoading = false}
+                            }
 
                     }
 

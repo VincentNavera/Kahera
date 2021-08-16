@@ -18,7 +18,7 @@ struct ItemView: View {
     @State private var showActions = false
     @State private var showEditItem = false
     @Binding var showCart: Bool
-    @State private var isLoading = true
+    
     var item: Inventory
 
     var body: some View {
@@ -51,13 +51,7 @@ struct ItemView: View {
         }
         .scaleEffect(animationAmount)
         .animation(.spring())
-        .redacted(when: isLoading, redactionType: .customPlaceholder)
-        .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 
-            isLoading = false}
-        }
-
-        
 
         .onTapGesture {
             self.showCart = true
