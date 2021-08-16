@@ -16,7 +16,7 @@ struct TabItemsView: View {
         TabView {
             ItemsView(cart: cart, showCart: $showCart)
             .tabItem {
-              Label("Inventory", systemImage: "")
+              Label("Inventory", systemImage: "tablecells.fill")
             }
             .animation(.default)
 
@@ -24,13 +24,12 @@ struct TabItemsView: View {
                 .onAppear{
                     showCart = false
                     showSideBarIcon = false
-
                 }
                 .onDisappear{
                     showCart = true
                     showSideBarIcon = true}
                 .tabItem {
-              Label("Sales", systemImage: "")
+              Label("Sales", systemImage: "dollarsign.circle.fill")
             }
 
 
