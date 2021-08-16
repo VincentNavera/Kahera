@@ -27,6 +27,7 @@
 		BD21619026CA0E70002D574F /* CustomKeyboardModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21618F26CA0E70002D574F /* CustomKeyboardModifiers.swift */; };
 		BD21619926CA2F66002D574F /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BD21619826CA2F66002D574F /* SFSymbolsPicker */; };
 		BD21619B26CA50EA002D574F /* TransactionTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21619A26CA50EA002D574F /* TransactionTotalView.swift */; };
+		BD21619D26CA59D4002D574F /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21619C26CA59D4002D574F /* TransactionHeaderView.swift */; };
 		BD3E5C1E26C756FC00183311 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3E5C1D26C756FC00183311 /* TransactionView.swift */; };
 		BD51C13E26C4A75600B6B47D /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD51C13D26C4A75600B6B47D /* CheckOutView.swift */; };
 		BD89E18E26BD3F75000413EE /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD89E18D26BD3F75000413EE /* AddItemView.swift */; };
@@ -66,6 +67,7 @@
 		BD1E2E0126B903C300D4DF82 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BD21618F26CA0E70002D574F /* CustomKeyboardModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardModifiers.swift; sourceTree = "<group>"; };
 		BD21619A26CA50EA002D574F /* TransactionTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTotalView.swift; sourceTree = "<group>"; };
+		BD21619C26CA59D4002D574F /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
 		BD3E5C1D26C756FC00183311 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		BD51C13D26C4A75600B6B47D /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		BD89E18D26BD3F75000413EE /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				BDA6323B26C6777B00A4BE72 /* SalesView.swift */,
 				BD3E5C1D26C756FC00183311 /* TransactionView.swift */,
+				BD21619C26CA59D4002D574F /* TransactionHeaderView.swift */,
 				BD21619A26CA50EA002D574F /* TransactionTotalView.swift */,
 			);
 			path = Sales;
@@ -314,6 +317,7 @@
 				BD51C13E26C4A75600B6B47D /* CheckOutView.swift in Sources */,
 				BD1E2DFE26B8F87F00D4DF82 /* CustomFontModifiers.swift in Sources */,
 				BD1E2DFC26B8F21100D4DF82 /* ItemView.swift in Sources */,
+				BD21619D26CA59D4002D574F /* TransactionHeaderView.swift in Sources */,
 				BDF5EA3226B90F89003CD754 /* EditItemView.swift in Sources */,
 				BD1E2DEB26B8E56A00D4DF82 /* Kahera.xcdatamodeld in Sources */,
 				BDA6323926C6633D00A4BE72 /* TabItemsView.swift in Sources */,

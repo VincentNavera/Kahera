@@ -9,18 +9,13 @@ import SwiftUI
 
 struct TransactionView: View {
     var transaction: Sales
-    var formatter: DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .full
-        return dateFormatter
-    }
+    
     @ObservedObject var cart: CartItems
 
     var body: some View {
-        VStack {
-            Text(formatter.string(from: transaction.wrappedDate))
-            Text(transaction.wrappedCustomerName)
+        ZStack {
+            VStack {
+            TransactionHeaderView(transaction: transaction)
             List() {
                 HStack {
                     HStack {
@@ -57,7 +52,7 @@ struct TransactionView: View {
                             }
 
                         }
-                        
+
                         HStack {
                             Text("\(cart.selectedCurrency)\(String(item.price))")
                             Spacer()
@@ -71,6 +66,7 @@ struct TransactionView: View {
 
                     }
                 }
+            }
             }
             TransactionTotalView(transaction: transaction, cart: cart)
         }

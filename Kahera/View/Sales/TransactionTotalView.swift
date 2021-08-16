@@ -11,7 +11,7 @@ struct TransactionTotalView: View {
     var transaction: Sales
     @ObservedObject var cart: CartItems
     var body: some View {
-        HStack {
+
             VStack {
                 HStack {
                     Text("Delivery Fee: \(cart.selectedCurrency)\(transaction.wrappedDeliveryFee)")
@@ -45,11 +45,11 @@ struct TransactionTotalView: View {
                 .padding(.top, 15)
             }
             .foregroundColor(.white)
+            .frame(width: 400, alignment: .leading)
+            .padding()
+            .background(Color(hex: "414243"))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
 
-            Spacer()
-        }
-        .padding()
-        .background(Color(hex: "414243"))
     }
 
 }
