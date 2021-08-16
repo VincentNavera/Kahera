@@ -19,16 +19,18 @@ struct TransactionHeaderView: View {
 
     
     var body: some View {
-        ZStack {
-            VStack {
-                Text(formatter.string(from: transaction.wrappedDate))
-                    .titleFont()
-                Text(transaction.wrappedCustomerName)
-                    .detailFont()
-            }
-           
+
+        VStack {
+            Text(formatter.string(from: transaction.wrappedDate))
+                .titleFont()
+            Text(transaction.wrappedCustomerName)
+                .detailFont()
         }
-        
+        .offset(y: 100)
+        .ignoresSafeArea()
+       
+           
+
     }
 }
 

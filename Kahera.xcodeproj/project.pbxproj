@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,7 +25,6 @@
 		BD1E2E0026B8FEB000D4DF82 /* ItemsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2DFF26B8FEB000D4DF82 /* ItemsContentView.swift */; };
 		BD1E2E0226B903C300D4DF82 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E2E0126B903C300D4DF82 /* HeaderView.swift */; };
 		BD21619026CA0E70002D574F /* CustomKeyboardModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21618F26CA0E70002D574F /* CustomKeyboardModifiers.swift */; };
-		BD21619926CA2F66002D574F /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BD21619826CA2F66002D574F /* SFSymbolsPicker */; };
 		BD21619B26CA50EA002D574F /* TransactionTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21619A26CA50EA002D574F /* TransactionTotalView.swift */; };
 		BD21619D26CA59D4002D574F /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21619C26CA59D4002D574F /* TransactionHeaderView.swift */; };
 		BD21619F26CA6E1B002D574F /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21619E26CA6E1B002D574F /* VisualEffectView.swift */; };
@@ -91,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD21619926CA2F66002D574F /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +237,6 @@
 			);
 			name = Kahera;
 			packageProductDependencies = (
-				BD21619826CA2F66002D574F /* SFSymbolsPicker */,
 			);
 			productName = Kahera;
 			productReference = BD1E2DE026B8E56A00D4DF82 /* Kahera.app */;
@@ -269,7 +266,6 @@
 			);
 			mainGroup = BD1E2DD726B8E56A00D4DF82;
 			packageReferences = (
-				BD21619726CA2F66002D574F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
 			);
 			productRefGroup = BD1E2DE126B8E56A00D4DF82 /* Products */;
 			projectDirPath = "";
@@ -405,6 +401,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -459,6 +456,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -483,10 +481,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vincio.Kahera;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "2,6";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -510,10 +508,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vincio.Kahera;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "2,6";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -539,25 +537,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BD21619726CA2F66002D574F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BD21619826CA2F66002D574F /* SFSymbolsPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD21619726CA2F66002D574F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
-			productName = SFSymbolsPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BD1E2DE926B8E56A00D4DF82 /* Kahera.xcdatamodeld */ = {

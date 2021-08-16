@@ -14,9 +14,11 @@ struct TransactionView: View {
 
 
     var body: some View {
+        
         ZStack {
             VStack {
                 TransactionHeaderView(transaction: transaction)
+                    
 
             List() {
                 HStack {
