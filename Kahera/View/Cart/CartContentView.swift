@@ -38,14 +38,14 @@ struct CartContentView: View {
 
             Section {
                 ForEach(cart.items, id: \.id) {item in //requires to use id to dynamically display the data
-                    CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: false)
+                    CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: false, image: item.image)
                         
                 }
                 .onDelete(perform: deleteItems)
 
                 ForEach(cart.discountedItems, id: \.id) {item in //requires to use id to dynamically display the data
                     ZStack {
-                    CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: true)
+                        CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: true, image: item.image)
                         VStack {
 
                             Text("less tax & discount".uppercased())

@@ -19,6 +19,7 @@ struct ItemView: View {
     @State private var showActions = false
     @State private var showEditItem = false
     @Binding var showCart: Bool
+    let image = "photo.fill.on.rectangle.fill"
     
     var item: Inventory
 
@@ -32,7 +33,7 @@ struct ItemView: View {
                 .shadow(color: Color(.displayP3, red: 242/255, green: 242/255, blue: 1, opacity: 1.0), radius: 24)
 
             VStack(spacing: 0) {
-                Image(systemName: "photo.fill.on.rectangle.fill")
+                Image(systemName: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 188, height: 100)
@@ -62,7 +63,7 @@ struct ItemView: View {
 
         .onTapGesture {
             self.showCart = true
-            var currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1, discounted: false, barcode: item.barcode ?? "000000")
+            var currentItem = CartItemModel(name: item.name ?? "no item name", price: item.price, quantity: 1, discounted: false, barcode: item.barcode ?? "000000", image: image)
 
             if cart.showDiscount {
                 currentItem.discounted = true

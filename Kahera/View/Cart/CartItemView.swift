@@ -7,6 +7,7 @@ struct CartItemView: View {
     let cartItemName: String
     @State private var animationAmount: CGFloat = 1
     let discounted: Bool
+    let image: String
 
     var body: some View {
         HStack {
@@ -14,7 +15,7 @@ struct CartItemView: View {
                 VStack(alignment: .leading) {
                     ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
 
-                        Image(systemName: "photo.fill.on.rectangle.fill")
+                        Image(systemName: image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 107, height: 57)
@@ -125,7 +126,7 @@ struct CartItemView: View {
 
 struct CartItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", discounted: false)
+        CartItemView(cart: CartItems(), cartItemPrice: 999.99, cartItemName: "Item Name", discounted: false, image: "photo.fill.on.rectangle.fill")
             .previewLayout(.fixed(width: 475, height: 100))
     }
 }
