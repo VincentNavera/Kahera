@@ -15,7 +15,6 @@ struct EditItemView: View {
     var item: Inventory
     @State private var itemName = ""
     @State private var price = ""
-    @State private var qty = ""
     @State private var barcode = ""
     @ObservedObject var cart: CartItems
     @State private var showNameAlert = false
@@ -41,11 +40,6 @@ struct EditItemView: View {
                         .modifier(NumbersAndDecimalsOnlyViewModifier(text: $price))
                         .alert(isPresented: $showPriceAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid price."), dismissButton: .cancel())})
                 }
-                Section(header: Text("Quantity")) {
-                    TextField(item.quantity ?? "0", text: $qty)
-                        .modifier(NumbersOnlyViewModifier(text: $qty))
-                        .alert(isPresented: $showQuantityAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid quantity."), dismissButton: .cancel())})
-                }
 
             }
 
@@ -62,8 +56,8 @@ struct EditItemView: View {
                     Button(action: saveItem, label: {
                         Text("Save")
                     })
-                        .foregroundColor(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? .gray.opacity(0.7) : Color(hex: "414243"))
-                        .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
+                        .foregroundColor(itemName.isEmpty || price.isEmpty || barcode.isEmpty ? .gray.opacity(0.7) : Color(hex: "414243"))
+                        .disabled(itemName.isEmpty || price.isEmpty || barcode.isEmpty ? true : false)
                         .alert(isPresented: $showQuantityAlert, content: { Alert(title: Text("ERROR!"), message: Text(errorMessage), dismissButton: .cancel())})
                     Spacer()
 
@@ -92,13 +86,10 @@ struct EditItemView: View {
         else if Double(price) == nil {
             self.showPriceAlert = true
         }
-        else if Int(qty) == nil {
-            self.showQuantityAlert = true
-        }
+
         else {
             item.barcode = barcode
             item.name = itemName
-            item.quantity = qty //qty type to be edited later
             item.price = Double(price) ?? 0.00
 
             do {
@@ -124,7 +115,6 @@ struct EditItemView_Previews: PreviewProvider {
         static var previews: some View {
             let inventory = Inventory(context: moc)
             inventory.name = ""
-            inventory.quantity = ""
             inventory.barcode = ""
             inventory.price = 0.00
 

@@ -12,6 +12,7 @@ struct ItemView: View {
 
     var itemLabel: String
     var priceLabel: Double
+    var barcodeLabel: String
     @ObservedObject var cart: CartItems
     @State private var animationAmount: CGFloat = 1
     @State private var tappedCard = ""
@@ -41,6 +42,11 @@ struct ItemView: View {
                     Text("\(cart.selectedCurrency)\(Double(priceLabel) , specifier: "%.2f")") //format to two decimal places
                         .detailFont()
                         .padding(.top, 5.0)
+                    Text(barcodeLabel)
+                        .subtitleFont()
+                        .foregroundColor(.gray.opacity(0.5))
+                        .padding(.top, 5.0)
+                        .padding(.bottom)
 
                 }
             }
@@ -49,6 +55,7 @@ struct ItemView: View {
             .padding(.horizontal, 5)
             .background(Color.clear)
         }
+        .padding()
         .scaleEffect(animationAmount)
         .animation(.spring())
 
@@ -89,7 +96,7 @@ struct ItemView: View {
             }
         }
         .onLongPressGesture{
-            showActions.toggle()
+            showActions = true
             self.tappedCard = item.name ?? "no item name"
             print(item.id!)
         }
@@ -114,7 +121,7 @@ struct ItemView: View {
 }
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(itemLabel: "Item", priceLabel: 9999.99, cart: CartItems(), showCart: .constant(false), item: Inventory())
+        ItemView(itemLabel: "Item", priceLabel: 9999.99, barcodeLabel: "0000", cart: CartItems(), showCart: .constant(false), item: Inventory())
             .previewLayout(.sizeThatFits)
 
 

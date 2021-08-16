@@ -13,7 +13,6 @@ struct AddItemView: View {
     @FetchRequest(entity: Inventory.entity(), sortDescriptors: []) var inventory: FetchedResults<Inventory>
     @State private var itemName = ""
     @State private var price = ""
-    @State private var qty = ""
     @State private var barcode = ""
     @ObservedObject var cart: CartItems
     @State private var showNameAlert = false
@@ -40,11 +39,6 @@ struct AddItemView: View {
                         .alert(isPresented: $showPriceAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid price."), dismissButton: .cancel())})
                         
                 }
-                Section(header: Text("Quantity")){
-                        TextField("0", text: $qty)
-                        .modifier(NumbersOnlyViewModifier(text: $qty))
-                        .alert(isPresented: $showQuantityAlert, content: { Alert(title: Text("Invalid Input!"), message: Text("Enter a valid quantity."), dismissButton: .cancel())})
-                }
 
             }
             VStack {
@@ -59,8 +53,8 @@ struct AddItemView: View {
                     Button(action: saveItem, label: {
                         Text("Save")
                     })
-                        .foregroundColor(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? .gray.opacity(0.7) : Color(hex: "414243"))
-                        .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
+                        .foregroundColor(itemName.isEmpty || price.isEmpty || barcode.isEmpty ? .gray.opacity(0.7) : Color(hex: "414243"))
+                        .disabled(itemName.isEmpty || price.isEmpty || barcode.isEmpty ? true : false)
                         .alert(isPresented: $showQuantityAlert, content: { Alert(title: Text("ERROR!"), message: Text(errorMessage), dismissButton: .cancel())})
                     Spacer()
 
@@ -85,15 +79,12 @@ struct AddItemView: View {
         else if Double(price) == nil {
             self.showPriceAlert = true
         }
-        else if Int(qty) == nil {
-            self.showQuantityAlert = true
-        }
+
         else {
             let item = Inventory(context: self.moc)
             item.id = UUID()
             item.barcode = barcode
             item.name = itemName
-            item.quantity = qty //qty type to be edited later
             item.price = Double(price) ?? 0.00
 
             do {

@@ -23,7 +23,7 @@ struct ItemsContentView: View {
                 ForEach(inventory, id: \.id) { item in
                     ZStack {
 
-                        ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price, cart: cart, showCart: $showCart, item: item)
+                        ItemView(itemLabel: item.name ?? "No item name was given", priceLabel: item.price, barcodeLabel: item.barcode ?? "00000", cart: cart, showCart: $showCart, item: item)
                             .redacted(when: isLoading, redactionType: .customPlaceholder)
                             .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 1) {isLoading = false}
                             }
