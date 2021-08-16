@@ -11,6 +11,7 @@ struct TransactionTotalView: View {
     var transaction: Sales
     @ObservedObject var cart: CartItems
     @State private var show = false
+    @State private var dragAmount = CGSize(width: 225, height: 200)
     var body: some View {
 
             VStack {
@@ -64,7 +65,16 @@ struct TransactionTotalView: View {
                     show.toggle()
                 }
             }
-            .offset( show ? CGSize(width: 290, height: 209.5) : CGSize(width: 360, height: 280))
+            .offset(self.dragAmount)
+            .gesture(
+                DragGesture()
+                    .onChanged { self.dragAmount = $0.translation }
+                    .onEnded { _ in
+                        withAnimation(.spring()) {
+                            self.dragAmount = CGSize(width: 250, height: 200)
+                        }
+                    }
+                )
 
     }
 
