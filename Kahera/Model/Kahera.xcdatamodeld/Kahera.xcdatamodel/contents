@@ -25,18 +25,19 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Sales" representedClassName="Sales" syncable="YES">
-        <attribute name="cash" optional="YES" attributeType="String"/>
-        <attribute name="change" optional="YES" attributeType="String"/>
+        <attribute name="cash" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="change" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="customerName" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="deliveryFee" optional="YES" attributeType="String"/>
-        <attribute name="discount" optional="YES" attributeType="String"/>
+        <attribute name="deliveryFee" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="discount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="formattedDate" optional="YES" attributeType="String"/>
-        <attribute name="tax" optional="YES" attributeType="String"/>
-        <attribute name="taxableSales" optional="YES" attributeType="String"/>
-        <attribute name="taxExempt" optional="YES" attributeType="String"/>
-        <attribute name="taxExemptSales" optional="YES" attributeType="String"/>
+        <attribute name="tax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="taxableSales" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="taxExempt" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="taxExemptSales" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="total" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="transactionID" optional="YES" attributeType="String"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CheckOutItems" inverseName="transaction" inverseEntity="CheckOutItems"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -50,6 +51,6 @@
     <elements>
         <element name="CheckOutItems" positionX="-54" positionY="99" width="128" height="119"/>
         <element name="Inventory" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="Sales" positionX="-63" positionY="27" width="128" height="224"/>
+        <element name="Sales" positionX="-63" positionY="27" width="128" height="239"/>
     </elements>
 </model>

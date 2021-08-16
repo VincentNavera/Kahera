@@ -9,18 +9,26 @@ import SwiftUI
 
 struct TransactionHeaderView: View {
     var transaction: Sales
+    
     var formatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .full
         return dateFormatter
     }
+
     
     var body: some View {
-        Text(formatter.string(from: transaction.wrappedDate))
-            .titleFont()
-        Text(transaction.wrappedCustomerName)
-            .detailFont()
+        ZStack {
+            VStack {
+                Text(formatter.string(from: transaction.wrappedDate))
+                    .titleFont()
+                Text(transaction.wrappedCustomerName)
+                    .detailFont()
+            }
+           
+        }
+        
     }
 }
 

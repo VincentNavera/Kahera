@@ -12,10 +12,12 @@ struct TransactionView: View {
     
     @ObservedObject var cart: CartItems
 
+
     var body: some View {
         ZStack {
             VStack {
-            TransactionHeaderView(transaction: transaction)
+                TransactionHeaderView(transaction: transaction)
+
             List() {
                 HStack {
                     HStack {
@@ -39,7 +41,7 @@ struct TransactionView: View {
 
                         if item.isDiscounted {
                             HStack {
-                                Text("\(cart.selectedCurrency)\(String(item.price))")
+                                Text(item.wrappedName)
                                 Text("with SC/PWD Discount")
                                     .font(Font.system(size: 10, weight: .bold, design: .rounded))
                                     .foregroundColor(.red.opacity(0.7))
@@ -54,7 +56,7 @@ struct TransactionView: View {
                         }
 
                         HStack {
-                            Text("\(cart.selectedCurrency)\(String(item.price))")
+                            Text("\(cart.selectedCurrency)\(item.price, specifier: "%.2f")")
                             Spacer()
                         }
 
@@ -68,7 +70,11 @@ struct TransactionView: View {
                 }
             }
             }
+
             TransactionTotalView(transaction: transaction, cart: cart)
+                
+                
+
         }
     }
 }

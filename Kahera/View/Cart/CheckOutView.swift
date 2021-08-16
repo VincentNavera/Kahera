@@ -83,15 +83,15 @@ struct CheckOutView: View {
             checkOutItems.transaction?.date = Date()
             checkOutItems.transaction?.formattedDate = formattedDate
             checkOutItems.transaction?.total = cart.totalPrice
-            checkOutItems.transaction?.taxableSales = String(cart.taxableSales)
-            checkOutItems.transaction?.tax = String(cart.tax)
-            checkOutItems.transaction?.cash = String(cart.cash)
-            checkOutItems.transaction?.change = String(cart.change)
-            checkOutItems.transaction?.discount = String(cart.discount)
-            checkOutItems.transaction?.taxExempt = String(cart.taxExempt)
+            checkOutItems.transaction?.taxableSales = cart.taxableSales
+            checkOutItems.transaction?.tax = cart.tax
+            checkOutItems.transaction?.cash = Double(cart.cash) ?? 0.00
+            checkOutItems.transaction?.change = cart.change
+            checkOutItems.transaction?.discount = cart.discount
+            checkOutItems.transaction?.taxExempt = cart.taxExempt
             checkOutItems.transaction?.customerName = cart.customerName
-            checkOutItems.transaction?.taxableSales = String(cart.taxExemptSales)
-            checkOutItems.transaction?.deliveryFee = cart.deliveryFee
+            checkOutItems.transaction?.taxableSales = cart.taxExemptSales
+            checkOutItems.transaction?.deliveryFee = Double(cart.deliveryFee) ?? 0.00
 
         }
 
