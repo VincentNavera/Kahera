@@ -81,7 +81,6 @@ struct AddItemView: View {
         }
         else if itemsArray.contains(barcode) {
             self.showBarcodeAlert = true
-
         }
         else if Double(price) == nil {
             self.showPriceAlert = true

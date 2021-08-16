@@ -18,6 +18,7 @@ struct EditItemView: View {
     @State private var qty = ""
     @State private var barcode = ""
     @ObservedObject var cart: CartItems
+    @State private var showNameAlert = false
     @State private var showBarcodeAlert = false
     @State private var showPriceAlert = false
     @State private var showQuantityAlert = false
@@ -28,6 +29,7 @@ struct EditItemView: View {
             List {
                 Section(header: Text("Name")) {
                     TextField(item.name ?? "No Name", text: $itemName)
+                        .alert(isPresented: $showNameAlert, content: { Alert(title: Text("Name Already Exists!"), message: Text("Enter a valid name."), dismissButton: .cancel())})
 
                 }
                 Section(header: Text("Item ID / Barcode")) {
@@ -73,8 +75,21 @@ struct EditItemView: View {
         
     }
     func saveItem() {
+        var itemsArray = [String]()
+        for items in inventory {
+            if items.name != item.name && items.barcode != item.barcode { //excludes the selected item for the user to save with the current item name and barcode
+            itemsArray.insert(items.name?.lowercased() ?? "No Name", at: 0)
+            itemsArray.insert(items.barcode ?? "00000", at:  0)
+            }
+        }
+        if itemsArray.contains(itemName.lowercased()) {
+            self.showNameAlert = true
+        }
+        else if itemsArray.contains(barcode) {
+            self.showBarcodeAlert = true
 
-        if Double(price) == nil {
+        }
+        else if Double(price) == nil {
             self.showPriceAlert = true
         }
         else if Int(qty) == nil {
