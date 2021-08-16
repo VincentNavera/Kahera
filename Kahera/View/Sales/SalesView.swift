@@ -22,6 +22,7 @@ struct SalesView: View {
     }
     @Binding var showCart: Bool
     @State private var showAlert = false
+    @ObservedObject var cart: CartItems
 
     var body: some View {
         NavigationView {
@@ -33,8 +34,8 @@ struct SalesView: View {
                                 Text(String(item))
                             }
                     }
-
                     .pickerStyle(MenuPickerStyle())
+//                    .pickerStyle(SegmentedPickerStyle())
 
                     ForEach(months, id: \.self) { month in
                         Section(header: Text(month)) {
@@ -42,7 +43,7 @@ struct SalesView: View {
 
                                 if formatter.string(from: transaction.wrappedDate).contains(month) && Calendar.current.component(.year, from: transaction.wrappedDate) == currentYear { //to be fixed
 
-                                    NavigationLink(formatter.string(from: transaction.wrappedDate), destination: TransactionView(transaction: transaction))
+                                    NavigationLink(formatter.string(from: transaction.wrappedDate), destination: TransactionView(transaction: transaction, cart: cart))
                                         .onAppear{print(transaction.wrappedDate)}
 
                                 }
@@ -83,6 +84,6 @@ struct SalesView: View {
 
 struct SalesView_Previews: PreviewProvider {
     static var previews: some View {
-        SalesView(showCart: .constant(false))
+        SalesView(showCart: .constant(false), cart: CartItems())
     }
 }

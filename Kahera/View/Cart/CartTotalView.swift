@@ -18,7 +18,6 @@ struct CartTotalView: View {
                     Spacer()
 
                     Text("\(cart.selectedCurrency)\(self.cart.totalPrice, specifier: "%.2f")")
-
                         .titleFont()
                 }
 

@@ -20,7 +20,7 @@ struct TabItemsView: View {
             }
             .animation(.default)
 
-            SalesView(showCart: $showCart)
+            SalesView(showCart: $showCart, cart: cart)
                 .onAppear{
                     showCart = false
                     showSideBarIcon = false

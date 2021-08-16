@@ -69,8 +69,9 @@ struct CheckOutView: View {
             allItems.insert(item, at: 0)
         }
 
-        let checkOutItems = CheckOutItems(context: self.moc)
+
         for item in allItems {
+            let checkOutItems = CheckOutItems(context: self.moc)
 
             checkOutItems.name = item.name
             checkOutItems.barcode = item.barcode
