@@ -21,10 +21,10 @@ struct HeaderView: View {
                 if !edit {
                     HStack {
                     if showCart {
-                        Text("Discount")
+                        Text("SC/PWD Discount")
                             .detailFont()
                             .padding(.leading, 15)
-                        Toggle("With discount", isOn: $cart.showDiscount)
+                        Toggle("With senior citizen/PWD discount", isOn: $cart.showDiscount)
                             .toggleStyle(SwitchToggleStyle(tint: Color(hex: "8fbd71")))
                             .labelsHidden()
                             .padding(.trailing, 170)

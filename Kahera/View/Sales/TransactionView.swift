@@ -39,7 +39,7 @@ struct TransactionView: View {
                         Text(String(item.quantity))
                         Spacer()
                         if item.isDiscounted {
-                            Text("with discount")
+                            Text("with SC/PWD Discount")
                                 .foregroundColor(.red.opacity(0.7))
                         }
                     }
@@ -51,14 +51,9 @@ struct TransactionView: View {
                 Text("Taxable Sales: \(cart.selectedCurrency)\(transaction.wrappedtaxableSales)")
                 Text("Tax Exempt Sales: \(cart.selectedCurrency)\(transaction.wrappedTaxExemptSales)")
                 Text("Tax Exempt: \(cart.selectedCurrency)\(transaction.wrappedTaxExempt)")
-                Text("Discount: \(cart.selectedCurrency)\(transaction.wrappedDiscount)")
+                Text("SC/PWD Discount: \(cart.selectedCurrency)\(transaction.wrappedDiscount)")
                 Text("TOTAL: \(cart.selectedCurrency)\(String(transaction.total))")
                     .titleFont()
-
-
-
-
-
 
             }
         }

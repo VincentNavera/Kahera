@@ -48,7 +48,7 @@ struct CartContentView: View {
                         CartItemView(cart: cart, cartItemPrice: item.price, cartItemName: item.name, discounted: true, image: item.image)
                         VStack {
 
-                            Text("less tax & discount".uppercased())
+                            Text("with SC/PWD DISCOUNT")
                                 .titleFont()   .foregroundColor(Color.red.opacity(0.3))
 //                            .padding(.init(top: 0, leading: 5, bottom: 0, trailing: 5))
 //                            .background(Color.red)
@@ -139,7 +139,7 @@ struct CartContentView: View {
                 }
                 HStack {
 
-                    Text("Discount (\(cart.discountPercentage)%): ")
+                    Text("SC/PWD Discount (\(cart.discountPercentage)%): ")
                         .foregroundColor(.gray)
                         .detailFont()
                     Stepper("Change the percentage of discount", value: $cart.discountPercentage, in: 1...9999999) {_ in
