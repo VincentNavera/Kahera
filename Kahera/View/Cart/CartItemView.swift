@@ -40,7 +40,7 @@ struct CartItemView: View {
 
 
 
-                Text("₱\(Double(cartItemPrice) , specifier: "%.2f")")
+                Text("\(cart.selectedCurrency)\(Double(cartItemPrice) , specifier: "%.2f")")
                     .largeTitleFont()
 
                     .padding(.trailing, 10)

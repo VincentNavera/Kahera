@@ -70,7 +70,7 @@ struct CartContentView: View {
                     Spacer()
 
 
-                    TextField("₱0.00", text: $cart.deliveryFee, onCommit: {})
+                    TextField("\(cart.selectedCurrency)0.00", text: $cart.deliveryFee, onCommit: {})
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .textFieldStyle(.roundedBorder)
@@ -83,7 +83,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱\(cart.taxableSales, specifier: "%.2f")")
+                    Text("\(cart.selectedCurrency)\(cart.taxableSales, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
@@ -101,7 +101,7 @@ struct CartContentView: View {
 
 
                     Spacer()
-                    Text("₱\(cart.tax, specifier: "%.2f")")
+                    Text( "\(cart.selectedCurrency)\(cart.tax, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
 
@@ -113,7 +113,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱\(cart.taxExemptSales, specifier: "%.2f")")
+                    Text("\(cart.selectedCurrency)\(cart.taxExemptSales, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
 
@@ -125,7 +125,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱\(cart.taxExempt, specifier: "%.2f")")
+                    Text("\(cart.selectedCurrency)\(cart.taxExempt, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
@@ -141,7 +141,7 @@ struct CartContentView: View {
                     .labelsHidden()
 
                     Spacer()
-                    Text("₱\(cart.discount, specifier: "%.2f")")
+                    Text("\(cart.selectedCurrency)\(cart.discount, specifier: "%.2f")")
                         .foregroundColor(.gray)
 
                 }
@@ -151,7 +151,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    TextField("₱0.00", text: $cart.cash)
+                    TextField("\(cart.selectedCurrency)0.00", text: $cart.cash)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .textFieldStyle(.roundedBorder)
@@ -166,7 +166,7 @@ struct CartContentView: View {
                         .detailFont()
 
                     Spacer()
-                    Text("₱\(cart.change, specifier: "%.2f")")
+                    Text("\(cart.selectedCurrency)\(cart.change, specifier: "%.2f")")
 
 
                 }

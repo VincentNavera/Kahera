@@ -38,7 +38,7 @@ struct ItemView: View {
                 VStack(spacing: -8) {
                     Text(itemLabel)
                         .titleFont()
-                    Text("₱\(Double(priceLabel) , specifier: "%.2f")") //format to two decimal places
+                    Text("\(cart.selectedCurrency)\(Double(priceLabel) , specifier: "%.2f")") //format to two decimal places
                         .detailFont()
                         .padding(.top, 5.0)
 
