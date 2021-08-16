@@ -26,11 +26,11 @@ struct AddItemView: View {
                 }
                 Section(header: Text("Price")){
                     TextField("₱0.00", text: $price)
-                        .keyboardType(.decimalPad)
+                        .modifier(NumbersAndDecimalsOnlyViewModifier(text: $price))
                 }
                 Section(header: Text("Quantity")){
                         TextField("0", text: $qty)
-                            .keyboardType(.numberPad)
+                        .modifier(NumbersOnlyViewModifier(text: $qty))
                 }
 
             }
@@ -46,6 +46,7 @@ struct AddItemView: View {
                     Button(action: saveItem, label: {
                         Text("Save")
                     })
+                        .foregroundColor(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? .gray.opacity(0.7) : Color(hex: "414243"))
                         .disabled(itemName.isEmpty || price.isEmpty || qty.isEmpty || barcode.isEmpty ? true : false)
                     Spacer()
 

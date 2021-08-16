@@ -33,8 +33,7 @@ struct SalesView: View {
                                 Text(String(item))
                             }
                     }
-//                    .colorInvert()
-                    .colorMultiply(Color(hex: "8fbd71"))
+
                     .pickerStyle(MenuPickerStyle())
 
                     ForEach(months, id: \.self) { month in
